@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>--company-id</key>
+	<string>com.oanda</string>
+	<key>--project-company</key>
+	<string>OANDA</string>
+	<key>--project-name</key>
+	<string>OTNetworkLayer</string>
+	<key>--output</key>
+	<string>Docs</string>
+	<key>--input</key>
+	<array/>
+	<key>--ignore</key>
+	<array>
+		<string>main.m</string>
+		<string>SampleCode</string>
+		<string>ThirdParty</string>
+	</array>
+	<key>--keep-intermediate-files</key>
+	<true/>
+	<key>--keep-undocumented-objects</key>
+	<true/>
+	<key>--keep-undocumented-members</key>
+	<false/>
+	<key>--no-repeat-first-par</key>
+	<true/>
+	<key>--create-docset</key>
+	<true/>
+	<key>--install-docset</key>
+	<true/>
+	<key>--publish-docset</key>
+	<false/>
+</dict>
+</plist>

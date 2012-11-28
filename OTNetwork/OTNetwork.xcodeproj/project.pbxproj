@@ -1,0 +1,536 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8CDA19D816666C0700EBCA42 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDA19D716666C0700EBCA42 /* Foundation.framework */; };
+		8CDA19E716666C0700EBCA42 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDA19E616666C0700EBCA42 /* SenTestingKit.framework */; };
+		8CDA19EA16666C0700EBCA42 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDA19D716666C0700EBCA42 /* Foundation.framework */; };
+		8CDA19ED16666C0700EBCA42 /* libOTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDA19D416666C0700EBCA42 /* libOTNetwork.a */; };
+		8CDA19F316666C0700EBCA42 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8CDA19F116666C0700EBCA42 /* InfoPlist.strings */; };
+		8CDA1A0316666CC300EBCA42 /* OTNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA1A0216666CC300EBCA42 /* OTNetworkController.m */; };
+		8CDA1A1916666CF300EBCA42 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA1A0716666CF300EBCA42 /* AFHTTPClient.m */; };
+		8CDA1A1B16666CF300EBCA42 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA1A0916666CF300EBCA42 /* AFHTTPRequestOperation.m */; };
+		8CDA1A1D16666CF300EBCA42 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA1A0B16666CF300EBCA42 /* AFImageRequestOperation.m */; };
+		8CDA1A1F16666CF300EBCA42 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA1A0D16666CF300EBCA42 /* AFJSONRequestOperation.m */; };
+		8CDA1A2116666CF300EBCA42 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA1A0F16666CF300EBCA42 /* AFNetworkActivityIndicatorManager.m */; };
+		8CDA1A2316666CF300EBCA42 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA1A1216666CF300EBCA42 /* AFPropertyListRequestOperation.m */; };
+		8CDA1A2516666CF300EBCA42 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA1A1416666CF300EBCA42 /* AFURLConnectionOperation.m */; };
+		8CDA1A2716666CF300EBCA42 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA1A1616666CF300EBCA42 /* AFXMLRequestOperation.m */; };
+		8CDA1A2916666CF300EBCA42 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA1A1816666CF300EBCA42 /* UIImageView+AFNetworking.m */; };
+		8CDA1A2E16666CFB00EBCA42 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA1A2D16666CFB00EBCA42 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8CDA1A3316666DDB00EBCA42 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDA1A3216666DDB00EBCA42 /* UIKit.framework */; };
+		8CDA1A3516666E1D00EBCA42 /* OTNetworkLayerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA1A3416666E1D00EBCA42 /* OTNetworkLayerSpec.m */; };
+		8CDA1A3A1666700800EBCA42 /* libKiwi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDA1A391666700800EBCA42 /* libKiwi.a */; };
+		8CDA1A3C1666706E00EBCA42 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDA1A3B1666706E00EBCA42 /* MobileCoreServices.framework */; };
+		8CDA1A3E1666707900EBCA42 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDA1A3D1666707900EBCA42 /* SystemConfiguration.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8CDA19EB16666C0700EBCA42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CDA19CB16666C0700EBCA42 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CDA19D316666C0700EBCA42;
+			remoteInfo = OTNetwork;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8CDA19D216666C0700EBCA42 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8CDA19D416666C0700EBCA42 /* libOTNetwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOTNetwork.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CDA19D716666C0700EBCA42 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8CDA19DB16666C0700EBCA42 /* OTNetwork-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OTNetwork-Prefix.pch"; sourceTree = "<group>"; };
+		8CDA19E516666C0700EBCA42 /* OTNetworkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OTNetworkTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CDA19E616666C0700EBCA42 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		8CDA19F016666C0700EBCA42 /* OTNetworkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OTNetworkTests-Info.plist"; sourceTree = "<group>"; };
+		8CDA19F216666C0700EBCA42 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8CDA1A0116666CC300EBCA42 /* OTNetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTNetworkController.h; sourceTree = "<group>"; };
+		8CDA1A0216666CC300EBCA42 /* OTNetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTNetworkController.m; sourceTree = "<group>"; };
+		8CDA1A0616666CF300EBCA42 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
+		8CDA1A0716666CF300EBCA42 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
+		8CDA1A0816666CF300EBCA42 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		8CDA1A0916666CF300EBCA42 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		8CDA1A0A16666CF300EBCA42 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
+		8CDA1A0B16666CF300EBCA42 /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
+		8CDA1A0C16666CF300EBCA42 /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		8CDA1A0D16666CF300EBCA42 /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		8CDA1A0E16666CF300EBCA42 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		8CDA1A0F16666CF300EBCA42 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		8CDA1A1016666CF300EBCA42 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		8CDA1A1116666CF300EBCA42 /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		8CDA1A1216666CF300EBCA42 /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		8CDA1A1316666CF300EBCA42 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		8CDA1A1416666CF300EBCA42 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		8CDA1A1516666CF300EBCA42 /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		8CDA1A1616666CF300EBCA42 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		8CDA1A1716666CF300EBCA42 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		8CDA1A1816666CF300EBCA42 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		8CDA1A2C16666CFB00EBCA42 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		8CDA1A2D16666CFB00EBCA42 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		8CDA1A3216666DDB00EBCA42 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8CDA1A3416666E1D00EBCA42 /* OTNetworkLayerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTNetworkLayerSpec.m; sourceTree = "<group>"; };
+		8CDA1A391666700800EBCA42 /* libKiwi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKiwi.a; path = "OTNetwork/ThirdParty/Kiwi/build/Release-iphoneos/libKiwi.a"; sourceTree = "<group>"; };
+		8CDA1A3B1666706E00EBCA42 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		8CDA1A3D1666707900EBCA42 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8CDA19D116666C0700EBCA42 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CDA19D816666C0700EBCA42 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CDA19E116666C0700EBCA42 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CDA1A3E1666707900EBCA42 /* SystemConfiguration.framework in Frameworks */,
+				8CDA1A3C1666706E00EBCA42 /* MobileCoreServices.framework in Frameworks */,
+				8CDA1A3A1666700800EBCA42 /* libKiwi.a in Frameworks */,
+				8CDA1A3316666DDB00EBCA42 /* UIKit.framework in Frameworks */,
+				8CDA19E716666C0700EBCA42 /* SenTestingKit.framework in Frameworks */,
+				8CDA19EA16666C0700EBCA42 /* Foundation.framework in Frameworks */,
+				8CDA19ED16666C0700EBCA42 /* libOTNetwork.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8CDA19C916666C0700EBCA42 = {
+			isa = PBXGroup;
+			children = (
+				8CDA19D916666C0700EBCA42 /* OTNetwork */,
+				8CDA19EE16666C0700EBCA42 /* OTNetworkTests */,
+				8CDA19D616666C0700EBCA42 /* Frameworks */,
+				8CDA19D516666C0700EBCA42 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8CDA19D516666C0700EBCA42 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8CDA19D416666C0700EBCA42 /* libOTNetwork.a */,
+				8CDA19E516666C0700EBCA42 /* OTNetworkTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8CDA19D616666C0700EBCA42 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8CDA1A391666700800EBCA42 /* libKiwi.a */,
+				8CDA1A3D1666707900EBCA42 /* SystemConfiguration.framework */,
+				8CDA1A3B1666706E00EBCA42 /* MobileCoreServices.framework */,
+				8CDA1A3216666DDB00EBCA42 /* UIKit.framework */,
+				8CDA19D716666C0700EBCA42 /* Foundation.framework */,
+				8CDA19E616666C0700EBCA42 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8CDA19D916666C0700EBCA42 /* OTNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				8CDA1A0016666CC300EBCA42 /* OTNetworkLayer */,
+				8CDA19DA16666C0700EBCA42 /* Supporting Files */,
+				8CDA19FF16666C9A00EBCA42 /* ThirdParty */,
+			);
+			path = OTNetwork;
+			sourceTree = "<group>";
+		};
+		8CDA19DA16666C0700EBCA42 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8CDA19DB16666C0700EBCA42 /* OTNetwork-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8CDA19EE16666C0700EBCA42 /* OTNetworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				8CDA1A3416666E1D00EBCA42 /* OTNetworkLayerSpec.m */,
+				8CDA19EF16666C0700EBCA42 /* Supporting Files */,
+			);
+			path = OTNetworkTests;
+			sourceTree = "<group>";
+		};
+		8CDA19EF16666C0700EBCA42 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8CDA19F016666C0700EBCA42 /* OTNetworkTests-Info.plist */,
+				8CDA19F116666C0700EBCA42 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8CDA19FF16666C9A00EBCA42 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				8CDA1A0516666CF300EBCA42 /* AFNetworking */,
+				8CDA1A2B16666CFB00EBCA42 /* JSONKit */,
+			);
+			name = ThirdParty;
+			sourceTree = "<group>";
+		};
+		8CDA1A0016666CC300EBCA42 /* OTNetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				8CDA1A0116666CC300EBCA42 /* OTNetworkController.h */,
+				8CDA1A0216666CC300EBCA42 /* OTNetworkController.m */,
+			);
+			path = OTNetworkLayer;
+			sourceTree = "<group>";
+		};
+		8CDA1A0516666CF300EBCA42 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				8CDA1A0616666CF300EBCA42 /* AFHTTPClient.h */,
+				8CDA1A0716666CF300EBCA42 /* AFHTTPClient.m */,
+				8CDA1A0816666CF300EBCA42 /* AFHTTPRequestOperation.h */,
+				8CDA1A0916666CF300EBCA42 /* AFHTTPRequestOperation.m */,
+				8CDA1A0A16666CF300EBCA42 /* AFImageRequestOperation.h */,
+				8CDA1A0B16666CF300EBCA42 /* AFImageRequestOperation.m */,
+				8CDA1A0C16666CF300EBCA42 /* AFJSONRequestOperation.h */,
+				8CDA1A0D16666CF300EBCA42 /* AFJSONRequestOperation.m */,
+				8CDA1A0E16666CF300EBCA42 /* AFNetworkActivityIndicatorManager.h */,
+				8CDA1A0F16666CF300EBCA42 /* AFNetworkActivityIndicatorManager.m */,
+				8CDA1A1016666CF300EBCA42 /* AFNetworking.h */,
+				8CDA1A1116666CF300EBCA42 /* AFPropertyListRequestOperation.h */,
+				8CDA1A1216666CF300EBCA42 /* AFPropertyListRequestOperation.m */,
+				8CDA1A1316666CF300EBCA42 /* AFURLConnectionOperation.h */,
+				8CDA1A1416666CF300EBCA42 /* AFURLConnectionOperation.m */,
+				8CDA1A1516666CF300EBCA42 /* AFXMLRequestOperation.h */,
+				8CDA1A1616666CF300EBCA42 /* AFXMLRequestOperation.m */,
+				8CDA1A1716666CF300EBCA42 /* UIImageView+AFNetworking.h */,
+				8CDA1A1816666CF300EBCA42 /* UIImageView+AFNetworking.m */,
+			);
+			name = AFNetworking;
+			path = ThirdParty/AFNetworking;
+			sourceTree = "<group>";
+		};
+		8CDA1A2B16666CFB00EBCA42 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				8CDA1A2C16666CFB00EBCA42 /* JSONKit.h */,
+				8CDA1A2D16666CFB00EBCA42 /* JSONKit.m */,
+			);
+			name = JSONKit;
+			path = ThirdParty/JSONKit;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8CDA19D316666C0700EBCA42 /* OTNetwork */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CDA19F916666C0700EBCA42 /* Build configuration list for PBXNativeTarget "OTNetwork" */;
+			buildPhases = (
+				8CDA19D016666C0700EBCA42 /* Sources */,
+				8CDA19D116666C0700EBCA42 /* Frameworks */,
+				8CDA19D216666C0700EBCA42 /* CopyFiles */,
+				8CDA1A4D1666777900EBCA42 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OTNetwork;
+			productName = OTNetwork;
+			productReference = 8CDA19D416666C0700EBCA42 /* libOTNetwork.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		8CDA19E416666C0700EBCA42 /* OTNetworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CDA19FC16666C0700EBCA42 /* Build configuration list for PBXNativeTarget "OTNetworkTests" */;
+			buildPhases = (
+				8CDA19E016666C0700EBCA42 /* Sources */,
+				8CDA19E116666C0700EBCA42 /* Frameworks */,
+				8CDA19E216666C0700EBCA42 /* Resources */,
+				8CDA19E316666C0700EBCA42 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8CDA19EC16666C0700EBCA42 /* PBXTargetDependency */,
+			);
+			name = OTNetworkTests;
+			productName = OTNetworkTests;
+			productReference = 8CDA19E516666C0700EBCA42 /* OTNetworkTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8CDA19CB16666C0700EBCA42 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = OANDA;
+			};
+			buildConfigurationList = 8CDA19CE16666C0700EBCA42 /* Build configuration list for PBXProject "OTNetwork" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8CDA19C916666C0700EBCA42;
+			productRefGroup = 8CDA19D516666C0700EBCA42 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8CDA19D316666C0700EBCA42 /* OTNetwork */,
+				8CDA19E416666C0700EBCA42 /* OTNetworkTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8CDA19E216666C0700EBCA42 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CDA19F316666C0700EBCA42 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8CDA19E316666C0700EBCA42 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		8CDA1A4D1666777900EBCA42 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "appledoc .\nexit 0";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8CDA19D016666C0700EBCA42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CDA1A0316666CC300EBCA42 /* OTNetworkController.m in Sources */,
+				8CDA1A1916666CF300EBCA42 /* AFHTTPClient.m in Sources */,
+				8CDA1A1B16666CF300EBCA42 /* AFHTTPRequestOperation.m in Sources */,
+				8CDA1A1D16666CF300EBCA42 /* AFImageRequestOperation.m in Sources */,
+				8CDA1A1F16666CF300EBCA42 /* AFJSONRequestOperation.m in Sources */,
+				8CDA1A2116666CF300EBCA42 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				8CDA1A2316666CF300EBCA42 /* AFPropertyListRequestOperation.m in Sources */,
+				8CDA1A2516666CF300EBCA42 /* AFURLConnectionOperation.m in Sources */,
+				8CDA1A2716666CF300EBCA42 /* AFXMLRequestOperation.m in Sources */,
+				8CDA1A2916666CF300EBCA42 /* UIImageView+AFNetworking.m in Sources */,
+				8CDA1A2E16666CFB00EBCA42 /* JSONKit.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CDA19E016666C0700EBCA42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CDA1A3516666E1D00EBCA42 /* OTNetworkLayerSpec.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8CDA19EC16666C0700EBCA42 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8CDA19D316666C0700EBCA42 /* OTNetwork */;
+			targetProxy = 8CDA19EB16666C0700EBCA42 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8CDA19F116666C0700EBCA42 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8CDA19F216666C0700EBCA42 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8CDA19F716666C0700EBCA42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8CDA19F816666C0700EBCA42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8CDA19FA16666C0700EBCA42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/OTNetwork.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OTNetwork/OTNetwork-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		8CDA19FB16666C0700EBCA42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/OTNetwork.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OTNetwork/OTNetwork-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		8CDA19FD16666C0700EBCA42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OTNetwork/OTNetwork-Prefix.pch";
+				INFOPLIST_FILE = "OTNetworkTests/OTNetworkTests-Info.plist";
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/OTNetwork/ThirdParty/Kiwi/Kiwi";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		8CDA19FE16666C0700EBCA42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OTNetwork/OTNetwork-Prefix.pch";
+				INFOPLIST_FILE = "OTNetworkTests/OTNetworkTests-Info.plist";
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(SOURCE_ROOT)/OTNetwork/ThirdParty/Kiwi/Kiwi";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8CDA19CE16666C0700EBCA42 /* Build configuration list for PBXProject "OTNetwork" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CDA19F716666C0700EBCA42 /* Debug */,
+				8CDA19F816666C0700EBCA42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CDA19F916666C0700EBCA42 /* Build configuration list for PBXNativeTarget "OTNetwork" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CDA19FA16666C0700EBCA42 /* Debug */,
+				8CDA19FB16666C0700EBCA42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CDA19FC16666C0700EBCA42 /* Build configuration list for PBXNativeTarget "OTNetworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CDA19FD16666C0700EBCA42 /* Debug */,
+				8CDA19FE16666C0700EBCA42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8CDA19CB16666C0700EBCA42 /* Project object */;
+}

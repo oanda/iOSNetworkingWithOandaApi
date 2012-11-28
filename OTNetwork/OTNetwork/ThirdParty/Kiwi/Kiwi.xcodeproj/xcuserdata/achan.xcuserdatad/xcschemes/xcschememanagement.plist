@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Kiwi-OSX.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Kiwi-iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Kiwi.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>6BC17EC2155E3A47000B3AA4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>832C8323157263B300F160D5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A3B16541139967B800E9CC6E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F5015B9E11583A77002E9A98</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F5015C9D11584017002E9A98</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
