@@ -56,6 +56,8 @@ Notes on the <b>OTNetwork</b> Library
 <br/><br/>
 * All methods require a <b>Success</b> block and a <b>Failure</b> block to be passed, and either would be triggered asynchronously depending on the outcome of network request.  And these blocks all follow the same convention:
 
+            typedef void (^NetworkSuccessBlock)(NSDictionary *result);
+            typedef void (^NetworkFailBlock)(NSError *error);
 
 Notes on the <b>OTNetworkDemo</b> App
 -------------------------------------
@@ -64,7 +66,7 @@ Notes on the <b>OTNetworkDemo</b> App
 * <b>Kiwi</b> is not needed for OTNetworkDemo.
 
 
-Use case 1: Getting Rates
+Example 1: Getting Rates
 -------------------------
 
 Getting updated rates (ie. prices) for tradable currency pairs from <b>OANDA</b> is one of the most common operations.  The following is a simple walkthrough for doing this using the OTNetwork library (for more info, please refer to the included <b>OTNetworkDemo</b> app):
@@ -105,7 +107,7 @@ Getting updated rates (ie. prices) for tradable currency pairs from <b>OANDA</b>
 * You now have a list of symbols and a list of prices ready for display.
 
 
-Use case 2: Making a "BUY" (ie. long) order
+Example 2: Making a "BUY" (ie. long) order
 -------------------------------------------
 
 You need a valid username with an active account to do this.  In fact, at this point almost all requests to the <b>OANDA</b> services would need an account number:

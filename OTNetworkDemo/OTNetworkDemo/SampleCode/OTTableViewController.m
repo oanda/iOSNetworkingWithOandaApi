@@ -2,8 +2,8 @@
 //  OTTableViewController.m
 //  OTNetworkLayer
 //
-//  Created by Johnny Li on 12-11-13.
-//  Copyright (c) 2012 Johnny Li. All rights reserved.
+//  Created by Johnny Li, Adam Chan on 12-11-13.
+//  Copyright (c) 2012 OANDA Corporation. All rights reserved.
 //
 
 #import "OTTableViewController.h"
@@ -258,34 +258,6 @@ static NSNumber *gMaxTradeIdForTradePoll;
                                        success:^(NSDictionary *responseObject)
      {
          NSLog(@"Success!  %@", responseObject);
-         [self doTradesList:gAccountId];
-         
-     } failure:^(NSError *error) {
-         NSLog(@"Failure");
-     }];
-}
-
--(void) doTradesList:(NSNumber *)accountId
-{
-    // Test getting the list of existing trades
-    [self.networkDelegate tradesListForAccountId:accountId
-                                       success:^(NSDictionary *responseObject)
-     {
-         NSLog(@"Success!  %@", responseObject);
-         [self doOrdersList:gAccountId];
-         
-     } failure:^(NSError *error) {
-         NSLog(@"Failure");
-     }];
-}
-
--(void) doOrdersList:(NSNumber *)accountId
-{
-    // Test getting the list of existing orders
-    [self.networkDelegate ordersListForAccountId:accountId
-                                  success:^(NSDictionary *responseObject)
-     {
-         NSLog(@"Success!  %@", responseObject);
          [self doPriceAlertsList:gAccountId];
          
      } failure:^(NSError *error) {
@@ -314,6 +286,22 @@ static NSNumber *gMaxTradeIdForTradePoll;
                                      success:^(NSDictionary *responseObject)
      {
          NSLog(@"Success!  %@", responseObject);
+         [self doCandlesList];
+         
+     } failure:^(NSError *error) {
+         NSLog(@"Failure");
+     }];
+}
+
+-(void) doCandlesList
+{
+    // Test getting a list of candles
+    [self.networkDelegate rateCandlesForSymbol:@"EUR_USD"
+                                   granularity:@"S30"
+                                numberOfPoints:[NSNumber numberWithInt:5]
+                                       success:^(NSDictionary *responseObject)
+     {
+         NSLog(@"Success!  %@", responseObject);
          [self doCreateOrder:gAccountId];
          
      } failure:^(NSError *error) {
@@ -340,6 +328,20 @@ static NSNumber *gMaxTradeIdForTradePoll;
      {
          NSLog(@"Success!  Order Created: %@", responseObject);
          gOrderId = [responseObject valueForKey:@"id"];
+         [self doOrdersList:gAccountId];
+         
+     } failure:^(NSError *error) {
+         NSLog(@"Failure");
+     }];
+}
+
+-(void) doOrdersList:(NSNumber *)accountId
+{
+    // Test getting the list of existing orders
+    [self.networkDelegate ordersListForAccountId:accountId
+                                         success:^(NSDictionary *responseObject)
+     {
+         NSLog(@"Success!  %@", responseObject);
          [self doChangeOrder:gAccountId withOrderId:gOrderId];
          
      } failure:^(NSError *error) {
@@ -426,6 +428,21 @@ static NSNumber *gMaxTradeIdForTradePoll;
      {
          NSLog(@"Success!  Trade Opened: %@", responseObject);
          gTradeId = [[responseObject valueForKey:@"ids"] objectAtIndex:0];
+         [self doTradesList:gAccountId];         
+         
+     } failure:^(NSError *error) {
+         NSLog(@"Failure");
+     }];
+}
+
+
+-(void) doTradesList:(NSNumber *)accountId
+{
+    // Test getting the list of existing trades
+    [self.networkDelegate tradesListForAccountId:accountId
+                                         success:^(NSDictionary *responseObject)
+     {
+         NSLog(@"Success!  %@", responseObject);
          [self doChangeTrade:gAccountId withTradeId:gTradeId];
          
      } failure:^(NSError *error) {

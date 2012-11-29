@@ -2,8 +2,8 @@
 //  OTNetworkController.m
 //  OTNetworkLayer
 //
-//  Created by Johnny Li on 12-11-12.
-//  Copyright (c) 2012 Johnny Li. All rights reserved.
+//  Created by Johnny Li, Adam Chan on 12-11-12.
+//  Copyright (c) 2012 OANDA Corporation. All rights reserved.
 //
 
 #import "OTNetworkController.h"
@@ -174,25 +174,24 @@
      }];
 }
 
-- (void)rateHistoryForSymbol:(NSString *)symbol
-                 granularity:(NSNumber *)granularity
-              numberOfPoints:(NSNumber *)points
-               markupGroupId:(NSNumber *)markupGroupId
+- (void)rateCandlesForSymbol:(NSString *)symbol
+                 granularity:(NSString *)granularity
+              numberOfPoints:(NSNumber *)count
                      success:(NetworkSuccessBlock)successBlock
                      failure:(NetworkFailBlock)failureBlock
 {
     NSMutableDictionary *parameters;
     parameters = [self setupDefaultParams];
-	[parameters setObject:symbol forKey:@"symbol"];
-	[parameters setObject:[granularity stringValue] forKey:@"granularity"];
-	[parameters setObject:[points stringValue] forKey:@"points"];
+	//[parameters setObject:symbol forKey:@"symbol"];
+	[parameters setObject:granularity forKey:@"granularity"];
     
-    if (markupGroupId)
+    if (count)
     {
-        [parameters setObject:[markupGroupId stringValue] forKey:@"markup_group_id"];
+        [parameters setObject:[count stringValue] forKey:@"count"];
     }
     
-    [_afc getPath:@"v1/rate/history.json" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSString *pathString = [NSString stringWithFormat:@"v1/instruments/%@/candles", symbol];
+    [_afc getPath:pathString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         // return the whole parsed JSON object
 #if defined(USE_JSONKIT)

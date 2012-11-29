@@ -2,8 +2,8 @@
 //  OTTableViewController.h
 //  OTNetworkLayer
 //
-//  Created by Johnny Li on 12-11-13.
-//  Copyright (c) 2012 Johnny Li. All rights reserved.
+//  Created by Johnny Li, Adam Chan on 12-11-13.
+//  Copyright (c) 2012 OANDA Corporation. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

@@ -2,8 +2,8 @@
 //  OTNetworkLayerSpec.m
 //  OTNetworkLayerTest
 //
-//  Created by Adam Chan on 2012-11-19.
-//  Copyright (c) 2012 Adam Chan. All rights reserved.
+//  Created by Johnny Li, Adam Chan on 12-11-19.
+//  Copyright (c) 2012 OANDA Corporation. All rights reserved.
 //
 
 #import "Kiwi.h"
@@ -102,27 +102,24 @@ describe(@"The Network Controller", ^{
                 [[expectFutureValue(listRates) shouldEventually] haveCountOfAtLeast:1];
             });
             
-            /*
             it(@"should receive a list of candles asynchronously", ^{
                 
                 __block NSArray *candlesList = nil;
                 
-                [networkController rateHistoryForSymbol:@"EUR/USD"
-                                          granularity:[NSNumber numberWithInt:2]
-                                       numberOfPoints:[NSNumber numberWithInt:50]
-                                        markupGroupId:nil
-                                              success:^(NSDictionary *responseObject)
+             [networkController rateCandlesForSymbol:@"EUR_USD"
+                                         granularity:@"S30"
+                                         numberOfPoints:[NSNumber numberWithInt:5]
+                                         success:^(NSDictionary *responseObject)
                  {
                      //NSLog(@"Success!  %@", responseObject);
-                     candlesList = [responseObject objectForKey:@"price_points"];
+                     candlesList = [responseObject objectForKey:@"candles"];
                      
                  } failure:^(NSError *error) {
                      NSLog(@"Failure");
                  }];
                 
-                [[expectFutureValue(candlesList) shouldEventually] haveCountOfAtLeast:50];
+                [[expectFutureValue(candlesList) shouldEventually] haveCountOfAtLeast:5];
             });
-            */
         }); //context(@"when working with Rates"
         
         context(@"when asking for reports", ^{

@@ -2,8 +2,8 @@
 //  OTNetworkController.h
 //  OTNetworkLayer
 //
-//  Created by Johnny Li on 12-11-12.
-//  Copyright (c) 2012 Johnny Li. All rights reserved.
+//  Created by Johnny Li, Adam Chan on 12-11-12.
+//  Copyright (c) 2012 OANDA Corporation. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -30,8 +30,8 @@ typedef void (^NetworkFailBlock)(NSError *error);
  
  Also please be aware of these typedef for the blocks mentioned:
  
- typedef void (^NetworkSuccessBlock)(NSDictionary *result);
- typedef void (^NetworkFailBlock)(NSError *error);
+     typedef void (^NetworkSuccessBlock)(NSDictionary *result);
+     typedef void (^NetworkFailBlock)(NSError *error);
  
  For additional information on Objective-C blocks, please refer to
  http://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Blocks/
@@ -40,8 +40,8 @@ typedef void (^NetworkFailBlock)(NSError *error);
 */
 @interface OTNetworkController : NSObject
 
-#pragma mark User
-/** @name Core */
+#pragma mark Accessing and Managing User Accounts
+/** @name Accessing and Managing User Accounts */
 
 /** To retrieve a list of accounts belonging to the user.
 
@@ -52,27 +52,18 @@ typedef void (^NetworkFailBlock)(NSError *error);
  @return The function itself returns nothing.  A successful operation would trigger instead the successBlock, passing
  back an NSDictionary* as argument.  The NSDictionary should contain an array of NSDictionary, each describing an account belonging to the user.
  @return Example of a returned NSDictionary:
- {
- "account_list" =
- (
- {
- "account_property_name" = ();
- homecurr = USD;
- id = 928766;
- "margin_rate" = "0.05";
- name = mamanager1;
- },
- {
- "account_property_name" = ();
- homecurr = USD;
- id = 701048;
- "margin_rate" = "0.0333";
- name = "testusr2_5";
- }
- );
- "division_id" = 2;
- "markup_group_id" = 102;
- }
+     {
+         array =     (
+             {
+                 accountPropertyName = (
+                 );
+                 homecurr = USD;
+                 id = 506005;
+                 marginRate = "0.05";
+                 name = Primary;
+             }
+         );
+     }
  
  @return Similarly, any problem with the network would trigger the failureBlock, passing back an NSError.
  */
@@ -89,31 +80,28 @@ typedef void (^NetworkFailBlock)(NSError *error);
  argument of type **NSError***.
  @return The function itself returns nothing.  A successful operation would trigger instead the successBlock, passing back an NSDictionary* as argument.  The NSDictionary should contain details describing an account belonging to the user.
  @return Example of a returned NSDictionary:
- {
- "account_id" = 701048;
- "account_name" = "testusr2_5";
- balance = "99808.30959999999";
- homecurr = USD;
- "margin_avail" = "86110.2283";
- "margin_rate" = "0.0333";
- "margin_used" = "13858.1447";
- "markup_group_id" = 102;
- nav = "99968.37300000001";
- "open_orders" = 0;
- "open_trades" = 7;
- "realized_pl" = "-102.8888";
- "unrealized_pl" = "160.0634";
- }
+     {
+         accountId = 506005;
+         accountName = Primary;
+         balance = "99997.7752";
+         homecurr = USD;
+         marginAvail = "99997.7129";
+         marginRate = "0.05";
+         marginUsed = "0.0649";
+         openOrders = 0;
+         openTrades = 1;
+         unrealizedPl = "0.0026";
+     }
  @return Similarly, any problem with the network would trigger the failureBlock, passing back an NSError.
- @see accountListSuccess:failure:
+ @see accountListForUsername:success:failure:
  */
 - (void)accountStatusForAccountId:(NSNumber*)accountId
                           success:(NetworkSuccessBlock)successBlock
                           failure:(NetworkFailBlock)failureBlock;
 
 
-#pragma mark Rate
-/** @name Rate */
+#pragma mark Quoting Tradable Instruments
+/** @name Quoting Tradable Instruments */
 
 /** To retrieve a list of tradable symbol pairs.
  
@@ -123,46 +111,40 @@ typedef void (^NetworkFailBlock)(NSError *error);
  argument of type **NSError***.
  @return The function itself returns nothing.  A successful operation would trigger instead the successBlock, passing back an NSDictionary* as argument.  The NSDictionary should contain a list of symbols the client can trade on and where the pip location and pippettes are for that pair.
  @return Example of a returned NSDictionary:
- {
- symbols =     (
- {
- "max_trade_units" = 10000000;
- piploc = "0.0001";
- precision = 5;
- symbol = "AUD/CAD";
- },
- {
- "max_trade_units" = 10000000;
- piploc = "0.0001";
- precision = 5;
- symbol = "AUD/CHF";
- },
- {
- "max_trade_units" = 10000000;
- piploc = "0.0001";
- precision = 5;
- symbol = "AUD/HKD";
- },
- {
- "max_trade_units" = 10000000;
- piploc = "0.01";
- precision = 3;
- symbol = "AUD/JPY";
- },
- {
- "max_trade_units" = 10000000;
- piploc = "0.0001";
- precision = 5;
- symbol = "AUD/NZD";
- },
- {
- "max_trade_units" = 10000000;
- piploc = "0.0001";
- precision = 5;
- symbol = "USD/HKD";
- }
- );
- }
+     {
+         instruments =     (
+             {
+                 displayName = "EUR/USD";
+                 instrument = "EUR_USD";
+                 maxTradeUnits = 1000000;
+                 pip = "0.0001";
+             },
+             {
+                 displayName = "GBP/CAD";
+                 instrument = "GBP_CAD";
+                 maxTradeUnits = 10000000;
+                 pip = "0.0001";
+             },
+             {
+                 displayName = Soybeans;
+                 instrument = "SOYBN_USD";
+                 maxTradeUnits = 60000;
+                 pip = "0.01";
+             },
+             {
+                 displayName = "West Texas Oil";
+                 instrument = "WTICO_USD";
+                 maxTradeUnits = 10000;
+                 pip = "0.01";
+             },
+             {
+                 displayName = "XXX/USD";
+                 instrument = "XXX_USD";
+                 maxTradeUnits = 10;
+                 pip = "0.0001";
+             }
+         );
+     }
  
  @return Similarly, any problem with the network would trigger the failureBlock, passing back an NSError.
  @see rateQuote:success:failure:
@@ -173,44 +155,46 @@ typedef void (^NetworkFailBlock)(NSError *error);
 /** To retrieve the current market rate for a set of symbols.
  
  @param symbolPairList **Required**.  An NSArray of NSStrings, representing the symbols to retrieve prices for.  An example of this list would look like this:
- (
- AUD/JPY,
- CAD/HKD,
- EUR/USD,
- XAU/USD
- )
+     (
+         AUD/JPY,
+         CAD/HKD,
+         EUR/USD,
+         XAU/USD
+     )
  @param successBlock **Required**.  An Objective-C block passed in, to be triggered upon a successful network call.  The block has an
  argument of type **NSDictionary***.
  @param failureBlock **Required**.  An Objective-C block passed in, to be triggered upon a failed network call.  The block has an
  argument of type **NSError***.
  @return The function itself returns nothing.  A successful operation would trigger instead the successBlock, passing back an NSDictionary* as argument.  The NSDictionary should contain a list of symbols the client can trade on and where the pip location and pippettes are for that pair.
  @return Example of a returned NSDictionary:
- {
- prices =
- (
- {
- ask = "1.03601";
- bid = "1.03596";
- "new_ladder" = 1;
- symbol = "AUD/CAD";
- time = 1353610975;
- },
- {
- ask = "0.97243";
- bid = "0.97205";
- "new_ladder" = 1;
- symbol = "AUD/CHF";
- time = 1353611194;
- },
- {
- ask = "1.28697";
- bid = "1.28626";
- "new_ladder" = 1;
- symbol = "EUR/USD";
- time = 1353611236;
- }
- );
- }
+     {
+         prices =     (
+             {
+                 ask = "85.57299999999999";
+                 bid = "85.533";
+                 instrument = "AUD_JPY";
+                 time = "1354208555.370971";
+             },
+             {
+                 ask = "7.8087";
+                 bid = "7.80622";
+                 instrument = "CAD_HKD";
+                 time = "1354208555.354307";
+             },
+             {
+                 ask = "1.29596";
+                 bid = "1.29564";
+                 instrument = "EUR_USD";
+                 time = "1354208555.548539";
+             },
+             {
+                 ask = "1725.789";
+                 bid = "1725.389";
+                 instrument = "XAU_USD";
+                 time = "1354208555.47021";
+             }
+         );
+     }
  
  @return Similarly, any problem with the network would trigger the failureBlock, passing back an NSError.
  @see rateListSymbolsSuccess:failure:
@@ -219,32 +203,81 @@ typedef void (^NetworkFailBlock)(NSError *error);
           success:(NetworkSuccessBlock)successBlock
           failure:(NetworkFailBlock)failureBlock;
 
-/** To retrieve the historical pricing for a symbol.
+/** To retrieve the historical pricing for a symbol (ie. candles).
  
  @param symbol **Required**.  Which symbol to retrieve prices for (eg. EUR/USD)
- @param granularity **Required**.  Specifies the pricing interval to use. (eg. 2)
- @param points **Required**.  Specifies the maximum number of price points to return. (eg. 100)
- @param markupGroupId **Optional**.  Specifies the markup group for the user
+ @param granularity **Optional**.  Specifies the pricing interval to use. This must be one of the "named" THS granularities which include:
+        Second-based: S5,S10,S15,S30
+        Minute-based: M1,M2,M3,M4,M5,M10,M15,M30
+        Hour-based: H1,H2,H3,H4,H6,H8,H12
+        Daily: D
+        Weekly: W
+        Monthly: M The default for granularity is "S5"
+ @param count **Optional**.  Specifies the maximum number of price points to return. Default is 500, max is 5000.
  @param successBlock **Required**.  An Objective-C block passed in, to be triggered upon a successful network call.  The block has an
  argument of type **NSDictionary***.
  @param failureBlock **Required**.  An Objective-C block passed in, to be triggered upon a failed network call.  The block has an
  argument of type **NSError***.
  @return The function itself returns nothing.  A successful operation would trigger instead the successBlock, passing back an NSDictionary* as argument.  The NSDictionary should contain a list of past prices for the given symbol pair (ie. candles).
  @return Example of a returned NSDictionary:
- 
+     {
+         candles =     (
+             {
+                 closeMid = "1.29757";
+                 complete = true;
+                 highMid = "1.29757";
+                 lowMid = "1.29757";
+                 openMid = "1.29757";
+                 time = 1354215210;
+             },
+             {
+                 closeMid = "1.29763";
+                 complete = true;
+                 highMid = "1.29763";
+                 lowMid = "1.2976";
+                 openMid = "1.2976";
+                 time = 1354215300;
+             },
+             {
+                 closeMid = "1.29766";
+                 complete = true;
+                 highMid = "1.29766";
+                 lowMid = "1.29766";
+                 openMid = "1.29766";
+                 time = 1354215330;
+             },
+             {
+                 closeMid = "1.29762";
+                 complete = true;
+                 highMid = "1.29763";
+                 lowMid = "1.29759";
+                 openMid = "1.29763";
+                 time = 1354215360;
+             },
+             {
+                 closeMid = "1.29759";
+                 complete = false;
+                 highMid = "1.29759";
+                 lowMid = "1.29759";
+                 openMid = "1.29759";
+                 time = 1354215420;
+             }
+         );
+         granularity = S30;
+         instrument = "EUR_USD";
+     }
  @return Similarly, any problem with the network would trigger the failureBlock, passing back an NSError.
  @see rateQuote:success:failure:
  */
-- (void)rateHistoryForSymbol:(NSString *)symbol
-                 granularity:(NSNumber *)granularity
-              numberOfPoints:(NSNumber *)points
-               markupGroupId:(NSNumber *)markupGroupId
+- (void)rateCandlesForSymbol:(NSString *)symbol
+                 granularity:(NSString *)granularity
+              numberOfPoints:(NSNumber *)count
                      success:(NetworkSuccessBlock)successBlock
                      failure:(NetworkFailBlock)failureBlock;
 
 
-#pragma mark Reports
-/** @name Reports */
+#pragma mark Getting Reports on Past and Current Activities
+/** @name Getting Reports on Past and Current Activities */
 
 /** To retrieve the recent transactions for the given account.
  
@@ -255,82 +288,59 @@ typedef void (^NetworkFailBlock)(NSError *error);
  argument of type **NSError***.
  @return The function itself returns nothing.  A successful operation would trigger instead the successBlock, passing back an NSDictionary* as argument.  The NSDictionary should contain a list of NSDictionary, each describing a past transaction.
  @return Example of a returned NSDictionary:
- {
- transactions =     (
- {
- "account_id" = 701048;
- amount = "128.2351";
- balance = "99808.30959999999";
- "completion_code" = 100;
- diaspora = 177809312;
- duration = 20;
- "high_order_limit" = 0;
- id = 177809312;
- interest = 0;
- "low_order_limit" = 0;
- "margin_used" = "4.272";
- "order_link" = 0;
- price = "1.2368";
- "profit_loss" = "-0.0415";
- "stop_loss" = 0;
- symbol = "EUR/AUD";
- "take_profit" = 0;
- time = 1353535764;
- "trailing_stop" = 0;
- "transaction_link" = 177809311;
- type = SellMarket;
- units = 100;
- },
- {
- "account_id" = 701048;
- amount = "128.3063";
- balance = "99808.3511";
- "completion_code" = 100;
- diaspora = 0;
- duration = 0;
- "high_order_limit" = 0;
- id = 177809311;
- interest = 0;
- "low_order_limit" = 0;
- "margin_used" = "4.272";
- "order_link" = 0;
- price = "1.2372";
- "profit_loss" = 0;
- "stop_loss" = 0;
- symbol = "EUR/AUD";
- "take_profit" = 0;
- time = 1353535744;
- "trailing_stop" = 0;
- "transaction_link" = 0;
- type = BuyMarket;
- units = 100;
- },
- {
- "account_id" = 701048;
- amount = "1.2829";
- balance = "99808.3511";
- "completion_code" = 100;
- diaspora = 177809310;
- duration = 1384238;
- "high_order_limit" = 0;
- id = 177809310;
- interest = 0;
- "low_order_limit" = 0;
- "margin_used" = "0.0426";
- "order_link" = 0;
- price = "1.28286";
- "profit_loss" = "0.0037";
- "stop_loss" = 0;
- symbol = "EUR/USD";
- "take_profit" = 0;
- time = 1353535228;
- "trailing_stop" = 0;
- "transaction_link" = 177805677;
- type = SellMarket;
- units = 1;
- }
- );
- }
+     {
+         nextPage = "http://api-sandbox.oanda.com/accounts/506005/transactions?maxTransId=177809412";
+         transactions =     (
+             {
+                 accountId = 506005;
+                 amount = "1.29428";
+                 balance = "99997.9978";
+                 completionCode = 107;
+                 diaspora = 0;
+                 duration = 0;
+                 highOrderLimit = 0;
+                 id = 177809672;
+                 instrument = "EUR/USD";
+                 interest = 0;
+                 lowOrderLimit = 0;
+                 marginUsed = 0;
+                 orderLink = 0;
+                 price = 0;
+                 profitLoss = 0;
+                 stopLoss = 0;
+                 takeProfit = 0;
+                 time = 1354136400;
+                 trailingStop = 0;
+                 transactionLink = 0;
+                 type = Interest;
+                 units = 1;
+             },
+             {
+                 accountId = 506005;
+                 amount = 0;
+                 balance = 0;
+                 completionCode = 200;
+                 diaspora = 0;
+                 duration = 0;
+                 highOrderLimit = 0;
+                 id = 177809413;
+                 instrument = na;
+                 interest = 0;
+                 lowOrderLimit = 0;
+                 marginUsed = 0;
+                 orderLink = 0;
+                 price = 0;
+                 profitLoss = 0;
+                 stopLoss = 0;
+                 takeProfit = 0;
+                 time = 1354025883;
+                 trailingStop = 0;
+                 transactionLink = 0;
+                 type = CreateAccount;
+                 units = 0;
+             }
+         );
+     }
  @return Similarly, any problem with the network would trigger the failureBlock, passing back an NSError.
  */
 - (void)transactionListForAccountId:(NSNumber *)accountId
@@ -346,22 +356,33 @@ typedef void (^NetworkFailBlock)(NSError *error);
  argument of type **NSError***.
  @return The function itself returns nothing.  A successful operation would trigger instead the successBlock, passing back an NSDictionary* as argument.  The NSDictionary should contain a list of NSDictionary, each describing an open trade.
  @return Example of a returned NSDictionary:
- {
- "open_trades" =
- (
- {
- id = 1913099015;
- units = 10;
- dir = "L";
- symbol = "EUR/USD";
- time = 1353616691;
- price = 1.2878;
- "stop_loss" = 0;
- "take_profit" = 0;
- "trailing_stop" = 0;
- }
- );
- }
+     {
+         nextPage = "http://api-sandbox.oanda.com/accounts/506005/trades?maxTradeId=177809414";
+         trades =     (
+             {
+                 direction = long;
+                 id = 177809801;
+                 instrument = "AUD/JPY";
+                 price = "85.568";
+                 stopLoss = 0;
+                 takeProfit = 0;
+                 time = 1354212801;
+                 trailingStop = 0;
+                 units = 456;
+             },
+             {
+                 direction = long;
+                 id = 177809415;
+                 instrument = "EUR/USD";
+                 price = "1.29428";
+                 stopLoss = 0;
+                 takeProfit = 0;
+                 time = 1354025935;
+                 trailingStop = 0;
+                 units = 1;
+             }
+         );
+     }
  @return Similarly, any problem with the network would trigger the failureBlock, passing back an NSError.
  @see openTradeForAccount:symbol:units:type:price:minExecutionPrice:maxExecutionPrice:stopLoss:takeProfit:trailingStop:success:failure:
  */
@@ -378,7 +399,26 @@ typedef void (^NetworkFailBlock)(NSError *error);
  argument of type **NSError***.
  @return The function itself returns nothing.  A successful operation would trigger instead the successBlock, passing back an NSDictionary* as argument.  The NSDictionary should contain a list of NSDictionary, each describing an open order.
  @return Example of a returned NSDictionary:
- 
+     {
+         nextPage = "http://api-sandbox.oanda.com/accounts/506005/orders?maxOrderId=177809794";
+         orders =     (
+             {
+                 direction = long;
+                 expiry = 1354212879;
+                 highLimit = 0;
+                 id = 177809795;
+                 instrument = "EUR/GBP";
+                 lowLimit = 0;
+                 ocaGroupId = 0;
+                 price = "0.80443";
+                 stopLoss = 0;
+                 takeProfit = 0;
+                 time = 1354212278;
+                 trailingStop = 0;
+                 units = 123;
+             }
+         );
+     }
  @return Similarly, any problem with the network would trigger the failureBlock, passing back an NSError.
  @see createOrderForAccount:symbol:units:type:price:expiry:minExecutionPrice:maxExecutionPrice:stopLoss:takeProfit:trailingStop:success:failure:
  */
@@ -395,31 +435,30 @@ typedef void (^NetworkFailBlock)(NSError *error);
  argument of type **NSError***.
  @return The function itself returns nothing.  A successful operation would trigger instead the successBlock, passing back an NSDictionary* as argument.  The NSDictionary should contain a list of NSDictionary, each describing an open trade.
  @return Example of a returned NSDictionary:
- {
- "open_pricealerts" =
- (
- {
- id = 12345;
- "type" = "PriceAlert";
- "symbol" = "EUR/USD";
- "time" = 1234567891;
- "price_type" = "BID";
- "price" = 1.5;
- "expiry" = 1234569890
- },
- {
- id = 12344;
- "type" = "PriceAlert";
- "symbol" = "USD/CAD";
- "time" = 1234567890;
- "price_type" = "ASK";
- "price" = 1.0;
- "expiry" = 1234569890
- }
- );
- }
+     {
+         "alerts" =
+         (
+             {
+                 id = 12345;
+                 "type" = "PriceAlert";
+                 "symbol" = "EUR/USD";
+                 "time" = 1234567891;
+                 "price_type" = "BID";
+                 "price" = 1.5;
+                 "expiry" = 1234569890
+             },
+             {
+                 id = 12344;
+                 "type" = "PriceAlert";
+                 "symbol" = "USD/CAD";
+                 "time" = 1234567890;
+                 "price_type" = "ASK";
+                 "price" = 1.0;
+                 "expiry" = 1234569890
+             }
+         );
+     }
  @return Similarly, any problem with the network would trigger the failureBlock, passing back an NSError.
- @see createPriceAlertForAccount:symbol:priceType:price:expiry:success:failure:
  */
 - (void)priceAlertsListForAccountId:(NSNumber *)accountId
                             success:(NetworkSuccessBlock)successBlock
@@ -434,23 +473,16 @@ typedef void (^NetworkFailBlock)(NSError *error);
  argument of type **NSError***.
  @return The function itself returns nothing.  A successful operation would trigger instead the successBlock, passing back an NSDictionary* as argument.  The NSDictionary should contain a list of NSDictionary, each describing an open position.
  @return Example of a returned NSDictionary:
- {
- "open_positions" =
- (
- {
- dir = "l";
- symbol = "EUR/USD";
- units = 1000;
- "avg_price" = 25.23;
- },
- {
- dir = "s";
- symbol = "USD/CAD";
- units = 10000;
- "avg_price" = 325.56;
- }
- );
- }
+     {
+         positions = (
+             {
+                 avgPrice = "1.29428";
+                 direction = long;
+                 instrument = "EUR/USD";
+                 units = 1;
+             }
+         );
+     }
  @return Similarly, any problem with the network would trigger the failureBlock, passing back an NSError.
  @see closePositionForAccount:symbol:price:success:failure:
  */
@@ -466,29 +498,29 @@ typedef void (^NetworkFailBlock)(NSError *error);
  argument of type **NSError***.
  @return The function itself returns nothing.  A successful operation would trigger instead the successBlock, passing back an NSDictionary* as argument.  The NSDictionary should contain a list of NSDictionary, each describing a rate limit.
  @return Example of a returned NSDictionary:
- {
- "rate_limits" =
- (
- {
- limit = 0;
- remaining = 0;
- type = IPRateLimiter;
- },
- {
- limit = 100;
- remaining = 0;
- type = UsernameRateLimiter;
- }
- );
- }
+     {
+         "rate_limits" =
+         (
+             {
+                 limit = 0;
+                 remaining = 0;
+                 type = IPRateLimiter;
+             },
+             {
+                 limit = 100;
+                 remaining = 0;
+                 type = UsernameRateLimiter;
+             }
+         );
+     }
  @return Similarly, any problem with the network would trigger the failureBlock, passing back an NSError.
  */
 - (void)rateLimitsListSuccess:(NetworkSuccessBlock)successBlock
                       failure:(NetworkFailBlock)failureBlock;
 
 
-#pragma mark Positions
-/** @name Positions */
+#pragma mark Handling Positions
+/** @name Handling Positions */
 
 /** To close a position for the given account
  
@@ -501,17 +533,17 @@ typedef void (^NetworkFailBlock)(NSError *error);
  argument of type **NSError***.
  @return The function itself returns nothing.  A successful operation would trigger instead the successBlock, passing back an NSDictionary* as argument.  The NSDictionary should contain a list of ids of closed positions, plus details of the overall close operation.
  @return Example of a returned NSDictionary:
- {
- ids =
- (
- 12345,
- 12346,
- 12347
- );
- symbol = "EUR/USD";
- total_units = 1234;
- price = 1.2345;
- }
+     {
+         ids =
+         (
+             12345,
+             12346,
+             12347
+         );
+             symbol = "EUR/USD";
+             total_units = 1234;
+             price = 1.2345;
+     }
  @return Similarly, any problem with the network would trigger the failureBlock, passing back an NSError.
  @see positionsListForAccountId:success:failure:
  */
@@ -522,15 +554,15 @@ typedef void (^NetworkFailBlock)(NSError *error);
                         failure:(NetworkFailBlock)failureBlock;
 
 
-#pragma mark Orders
-/** @name Orders */
+#pragma mark Creating and Managing LimitOrders
+/** @name Creating and Managing LimitOrders */
 
 /** To create a LimitOrder for the given account
  
  @param accountId **Required**. Account Id to create the order for (must be owned by the user).
  @param symbol **Required**.  Symbol to buy/sell when the order triggers. (eg. EUR/USD).
  @param units **Required**.  Number of units to buy/sell when the order triggers.
- @param type **Required**.  Should be either "buy" or "sell".
+ @param type **Required**.  Should be either "long" (buy) or "short" (sell).
  @param price **Required**.  The price at which the order will trigger and create a trade.
  @param expiryInSeconds **Required**.  A period of time measured in seconds (from the moment this function is called), after which this order would be cancelled.
  @param lowPrice **Optional**.  Minimum execution price.
@@ -544,14 +576,14 @@ typedef void (^NetworkFailBlock)(NSError *error);
  argument of type **NSError***.
  @return The function itself returns nothing.  A successful operation would trigger instead the successBlock, passing back an NSDictionary* as argument.  The NSDictionary should contain details describing the outcome of this operation.
  @return Example of a returned NSDictionary:
- {
- dir = L;
- id = 1913101947;
- "oca_group_id" = 0;
- price = "0.80443";
- symbol = "EUR/GBP";
- units = 123;
- }
+     {
+         direction = long;
+         id = 177809795;
+         instrument = "EUR/GBP";
+         ocaGroupId = 0;
+         price = "0.80443";
+         units = 123;
+     }
  @return Similarly, any problem with the network would trigger the failureBlock, passing back an NSError.
  @see ordersListForAccountId:success:failure:
  */
@@ -575,7 +607,7 @@ typedef void (^NetworkFailBlock)(NSError *error);
  @param orderId **Required**. Id of order to modify (must belong to the account specified by accountId)
  @param symbol **Required**.  Symbol to buy/sell when the order triggers. (eg. EUR/USD).
  @param units **Required**.  Number of units to buy/sell when the order triggers.
- @param type **Required**.  Should be either "buy" or "sell".
+ @param type **Required**.  Should be either "long" (buy) or "short" (sell).
  @param price **Required**.  The price at which the order will trigger and create a trade.
  @param expiryInSeconds **Required**.  A period of time measured in seconds (from the moment this function is called), after which this order would be cancelled.
  @param lowPrice **Optional**.  Minimum execution price.
@@ -612,30 +644,49 @@ typedef void (^NetworkFailBlock)(NSError *error);
  This is the mechanism to detect triggered orders. This also allows the account to be used by multiple client sessions simultaneously (eg. with Web GUI, mobile app, etc.).
  
  @param accountId **Required**. Account Id to poll changes for (must be owned by the user).
- @param maxOrderId **Required**.  This is the maximum order id the client was given in the previous pollOrder call (pass in 0 if calling for very first time). This also means the client should save and latest max_order_id returned by the server for subsequent pollOrder requests.
+ @param maxOrderId **Required**.  This is the maximum order id the client was given in the previous pollOrder call (pass in 0 if calling for very first time). This also means the client should save and latest maxOrderId returned by the server for subsequent pollOrder requests.
  @param successBlock **Required**.  An Objective-C block passed in, to be triggered upon a successful network call.  The block has an
  argument of type **NSDictionary***.
  @param failureBlock **Required**.  An Objective-C block passed in, to be triggered upon a failed network call.  The block has an
  argument of type **NSError***.
- @return The function itself returns nothing.  A successful operation would trigger instead the successBlock, passing back an NSDictionary* as argument.  The NSDictionary should contain multiple lists, one for each of the created, deleted and updated orders.  As mentioned, a "max_order_id" value is also returned for use in the next poll.  In essence, if the server's max_id is greater than the client's max_id, the server has changes the client is interested in.
+ @return The function itself returns nothing.  A successful operation would trigger instead the successBlock, passing back an NSDictionary* as argument.  The NSDictionary should contain a list of  orders created.  As mentioned, a "maxOrderId" value is also returned for use in the next poll.  In essence, if the server's max_id is greater than the client's max_id, the server has changes the client is interested in.
  
  @return Example of a returned NSDictionary:
- {
- created =
- (
- 1913101947
- );
- deleted =
- (
- 1910348044
- );
- updated =
- (
- 1910348044,
- 1913101947
- );
- "max_order_id" = 1913103961;
- }
+     {
+         nextPage = "http://api-sandbox.oanda.com/accounts/506005/orders?maxOrderId=177809794";
+         orders =     (
+             {
+                 direction = long;
+                 expiry = 1354213265;
+                 highLimit = 0;
+                 id = 177809797;
+                 instrument = "EUR/GBP";
+                 lowLimit = 0;
+                 ocaGroupId = 0;
+                 price = "0.80443";
+                 stopLoss = "0.78443";
+                 takeProfit = "0.88443";
+                 time = 1354212565;
+                 trailingStop = 0;
+                 units = 456;
+             },
+             {
+                 direction = long;
+                 expiry = 1354213187;
+                 highLimit = 0;
+                 id = 177809795;
+                 instrument = "EUR/GBP";
+                 lowLimit = 0;
+                 ocaGroupId = 0;
+                 price = "0.80443";
+                 stopLoss = "0.78443";
+                 takeProfit = "0.88443";
+                 time = 1354212486;
+                 trailingStop = 0;
+                 units = 456;
+             }
+         );
+     }
  @return Similarly, any problem with the network would trigger the failureBlock, passing back an NSError.
  @see ordersListForAccountId:success:failure:
  */
@@ -655,14 +706,14 @@ typedef void (^NetworkFailBlock)(NSError *error);
  @return The function itself returns nothing.  A successful operation would trigger instead the successBlock, passing back an NSDictionary* as argument.  The NSDictionary should contain details regarding the order cancelled.
  
  @return Example of a returned NSDictionary:
- {
- dir = L;
- id = 1913319751;
- "oca_group_id" = 0;
- price = "0.80443";
- symbol = "EUR/GBP";
- units = 123;
- }
+     {
+         direction = long;
+         id = 177809797;
+         instrument = "EUR/GBP";
+         ocaGroupId = 0;
+         price = "0.80443";
+         units = 456;
+     }
  @return Similarly, any problem with the network would trigger the failureBlock, passing back an NSError.
  @see createOrderForAccount:symbol:units:type:price:expiry:minExecutionPrice:maxExecutionPrice:stopLoss:takeProfit:trailingStop:success:failure:
  */
@@ -672,15 +723,15 @@ typedef void (^NetworkFailBlock)(NSError *error);
                       failure:(NetworkFailBlock)failureBlock;
 
 
-#pragma mark Trades
-/** @name Trades */
+#pragma mark Creating and Managing MarketOrders Trades
+/** @name Creating and Managing MarketOrders Trades */
 
 /** To create a MarketOrder trade for the given account
  
  @param accountId **Required**. Account Id to execute the trade as (must be owned by the user).
  @param symbol **Required**.  Symbol to buy/sell when the order triggers. (eg. EUR/USD).
  @param units **Required**.  Number of units to buy/sell when the trade triggers.
- @param type **Optional**.  Should be either "buy" or "sell".  Default is "buy"
+ @param type **Optional**.  Should be either "long" (buy) or "short" (sell).  Default is "long"
  @param price **Optional**.  User price (informational, will be executed at server price).
  @param lowPrice **Optional**.  Minimum execution price.
  @param highPrice **Optional**.  Maximum execution price.
@@ -693,17 +744,16 @@ typedef void (^NetworkFailBlock)(NSError *error);
  argument of type **NSError***.
  @return The function itself returns nothing.  A successful operation would trigger instead the successBlock, passing back an NSDictionary* as argument.  The NSDictionary should contain details describing the outcome of this operation.
  @return Example of a returned NSDictionary:
- {
- dir = L;
- ids =
- (
- 177809322
- );
- "margin_used" = "28.5113";
- price = "85.875";
- symbol = "AUD/JPY";
- units = 456;
- }
+     {
+         direction = long;
+         ids = (
+             177809801
+         );
+         instrument = "AUD/JPY";
+         marginUsed = "23.7685";
+         price = "85.568";
+         units = 456;
+     }
  @return Similarly, any problem with the network would trigger the failureBlock, passing back an NSError.
  @see tradesListForAccountId:success:failure:
  @see closeTradeForAccount:tradeId:price:success:failure:
@@ -750,33 +800,41 @@ typedef void (^NetworkFailBlock)(NSError *error);
  This is the mechanism to detect triggered stop loss, take profit, and trailing stop orders. This also allows the account to be used by multiple client sessions simultaneously (eg. with Web GUI, mobile app, etc.).
  
  @param accountId **Required**. Account Id to poll changes for (must be owned by the user).
- @param maxTradeId **Required**.  This is the maximum trade id the client was given in the previous pollTrade call (pass in 0 if calling for very first time). This also means the client should save and latest max_trade_id returned by the server for subsequent pollTrade requests.
+ @param maxTradeId **Required**.  This is the maximum trade id the client was given in the previous pollTrade call (pass in 0 if calling for very first time). This also means the client should save and latest maxTradeId returned by the server for subsequent pollTrade requests.
  @param successBlock **Required**.  An Objective-C block passed in, to be triggered upon a successful network call.  The block has an
  argument of type **NSDictionary***.
  @param failureBlock **Required**.  An Objective-C block passed in, to be triggered upon a failed network call.  The block has an
  argument of type **NSError***.
- @return The function itself returns nothing.  A successful operation would trigger instead the successBlock, passing back an NSDictionary* as argument.  The NSDictionary should contain multiple lists, one for each of the opened, closed and updated orders.  As mentioned, a "max_trade_id" value is also returned for use in the next poll.  In essence, if the server's max_id is greater than the client's max_id, the server has changes the client is interested in.
+ @return The function itself returns nothing.  A successful operation would trigger instead the successBlock, passing back an NSDictionary* as argument.  The NSDictionary should contain a list of  open trades.  As mentioned, a "maxTradeId" value is also returned for use in the next poll.  In essence, if the server's max_id is greater than the client's max_id, the server has changes the client is interested in.
  
  @return Example of a returned NSDictionary:
- {
- closed =
- (
- 177809311,
- 177809322
- );
- opened =
- (
- 177809300,
- 177809304,
- 177809333
- );
- updated =
- (
- 177809322,
- 177809333
- );
- "max_trade_id" = 177809334;
- }
+     {
+         nextPage = "http://api-sandbox.oanda.com/accounts/506005/trades?maxTradeId=177809414";
+         trades =     (
+             {
+                 direction = long;
+                 id = 177809801;
+                 instrument = "AUD/JPY";
+                 price = "85.568";
+                 stopLoss = 0;
+                 takeProfit = 2000;
+                 time = 1354212801;
+                 trailingStop = 0;
+                 units = 456;
+             },
+             {
+                 direction = long;
+                 id = 177809415;
+                 instrument = "EUR/USD";
+                 price = "1.29428";
+                 stopLoss = 0;
+                 takeProfit = 0;
+                 time = 1354025935;
+                 trailingStop = 0;
+                 units = 1;
+             }
+         );
+     }
  @return Similarly, any problem with the network would trigger the failureBlock, passing back an NSError.
  @see tradesListForAccountId:success:failure:
  @see closeTradeForAccount:tradeId:price:success:failure:
@@ -798,13 +856,13 @@ typedef void (^NetworkFailBlock)(NSError *error);
  @return The function itself returns nothing.  A successful operation would trigger instead the successBlock, passing back an NSDictionary* as argument.  The NSDictionary should contain details regarding the trade closed.
  
  @return Example of a returned NSDictionary:
- {
- dir = L;
- id = 177809335;
- price = "85.92100000000001";
- profit = "0.0553";
- symbol = "AUD/JPY";
- }
+     {
+         direction = long;
+         id = 177809825;
+         instrument = "AUD/JPY";
+         price = "85.58499999999999";
+         profit = "0.0944";
+     }
  @return Similarly, any problem with the network would trigger the failureBlock, passing back an NSError.
  @see openTradeForAccount:symbol:units:type:price:minExecutionPrice:maxExecutionPrice:stopLoss:takeProfit:trailingStop:success:failure:
  */
