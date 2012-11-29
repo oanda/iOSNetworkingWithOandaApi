@@ -18,7 +18,7 @@
 Steps for Integration
 ---------------------
 
-These are the simple steps to follow to include this library to your iOS project:
+These are the simple steps to follow to incorporate this library into your iOS project:
 
 1. Add the library itself.  There are two ways to do this:
     * include <b>OTNetwork.xcodeproj</b> as a dependency
@@ -40,11 +40,11 @@ That's it.  Provided you have reliable network support (eg. Wifi, Ethernet, cell
 
 NOTE: The library itself was developed using <b>Kiwi</b> as the testing framework, but it is not a mandatory requirement for your app.
 
-For reference, please open the included <b>OTNetworkOandaApi.xcworkspace</b>.  It includes the Kiwi framework, the OTNetwork library, and the simple demo <b>OTNetworkDemo</b> that illustrates how one could make asynchronous calls to the <b>OANDA</b> trading services using this library.
+For reference, please open the included <b>OTNetworkOandaApi.xcworkspace</b>.  It includes the Kiwi framework, the OTNetwork library, and the simple demo <b>OTNetworkDemo</b> that illustrates how one could make asynchronous calls to the <b>OANDA</b> trading services via this library.
 
 
-Notes on the <b>OTNetwork</b> Library
--------------------------------------
+Notes on the OTNetwork Library
+------------------------------
 
 * User login & authentication is currently disabled, so simply passing in an approved username for now (please speak with your <b>OANDA</b> partner for details).  Please see <b>accountListForUsername:success:failure:</b> for further info.
 <br/><br/>
@@ -59,8 +59,8 @@ Notes on the <b>OTNetwork</b> Library
             typedef void (^NetworkSuccessBlock)(NSDictionary *result);
             typedef void (^NetworkFailBlock)(NSError *error);
 
-Notes on the <b>OTNetworkDemo</b> App
--------------------------------------
+Notes on the OTNetworkDemo App
+------------------------------
 * It is a simple app created mainly to illustrate how to fetch updated rates, for all tradable symbol pairs, from the OANDA services.  The most relevant sample code could be found in <b>OTTableViewController.m</b>
 <br/><br/>
 * <b>Kiwi</b> is not needed for OTNetworkDemo.
@@ -69,7 +69,7 @@ Notes on the <b>OTNetworkDemo</b> App
 Example 1: Getting Rates
 -------------------------
 
-Getting updated rates (ie. prices) for tradable currency pairs from <b>OANDA</b> is one of the most common operations.  The following is a simple walkthrough for doing this using the OTNetwork library (for more info, please refer to the included <b>OTNetworkDemo</b> app):
+Getting updated rates (ie. prices) for tradable currency pairs from <b>OANDA</b> is one of the most common operations.  The following is a simple walkthrough for doing this using the <b>OTNetwork</b> library (for more info, please refer to the included <b>OTNetworkDemo</b> app):
 
 * Call <b>rateListSymbolsSuccess:failure:</b> to obtain a list of tradable currency pairs.  In the <b>Success</b> block, extract the actual <b>instruments</b> list from the returned NSDictionary.  Further extract a list of just symbol pairs, to be used later to quote for rates.  You may want to save the original <b>instruments</b> list as well since it has more detailed info on each tradable pair (like proper display name).
 
@@ -107,7 +107,7 @@ Getting updated rates (ie. prices) for tradable currency pairs from <b>OANDA</b>
 * You now have a list of symbols and a list of prices ready for display.
 
 
-Example 2: Making a "BUY" (ie. long) order
+Example 2: Making a "BUY" (ie. long) Order
 -------------------------------------------
 
 You need a valid username with an active account to do this.  In fact, at this point almost all requests to the <b>OANDA</b> services would need an account number:
@@ -127,7 +127,7 @@ You need a valid username with an active account to do this.  In fact, at this p
                  NSLog(@"Failure");
              }];
 
-* Using the obtained account ID, <b>call createOrderForAccount:...success:failure:</b> to make a order request.  A successful network request would return an NSDictionary, and you could extract the <b>id</b> key value for later use (eg. quote the status of the order, make changes, cancel the order, etc.)
+* Using the obtained account ID, <b>call createOrderForAccount:...success:failure:</b> to make a order request.  A successful network request would return an NSDictionary, and you could extract the order's <b>id</b> key value for later use (eg. quote the status of the order, make changes, cancel the order, etc.)
 
             [self.networkDelegate createOrderForAccount:gAccountId
                                           symbol:@"EUR/GBP"
@@ -156,5 +156,5 @@ Further Details
 
 For more information on the methods provided, please refer to the documentation in <b>OTNetworkController.h</b>
 
-For in-depth info on the OANDA API used, please check out <a href="https://github.com/oanda/apidocs/blob/master/README.md">The OANDA API</a>
+For in-depth info on the OANDA API used under the hood, please check out <a href="https://github.com/oanda/apidocs/blob/master/README.md">The OANDA API</a>
 
