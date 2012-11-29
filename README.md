@@ -151,3 +151,10 @@ You need a valid username with an active account to do this.  In fact, at this p
              }];
 
 
+Further Details
+---------------
+
+For more information on the methods provided, please refer to the documentation in <b>OTNetworkController.h</b>
+
+For in-depth info on the OANDA API used, please check out <a href="https://github.com/oanda/apidocs/blob/master/README.md">The OANDA API</a>
+
