@@ -163,7 +163,7 @@
          }
          
          allowRatesFetching = YES;
-     } failure:^(NSError *error) {
+     } failure:^(NSDictionary *error) {
          NSLog(@"Failure");
      }];
 }
@@ -197,7 +197,7 @@
                  [self.tableView reloadData];
                  //NSLog(@"Rates: %@", responseObject);
                  
-             } failure:^(NSError *error) {
+             } failure:^(NSDictionary *error) {
                  NSLog(@"Failure");
              }];
         }
@@ -232,7 +232,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          gAccountId = [anAccount valueForKey:@"id"];
          [self doAccountStatus:gAccountId];
          
-     } failure:^(NSError *error) {
+     } failure:^(NSDictionary *error) {
          NSLog(@"Failure");
      }];
 }
@@ -246,7 +246,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          NSLog(@"Success!  %@", responseObject);
          [self doTransactionsList:gAccountId];
          
-     } failure:^(NSError *error) {
+     } failure:^(NSDictionary *error) {
          NSLog(@"Failure");
      }];
 }
@@ -260,7 +260,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          NSLog(@"Success!  %@", responseObject);
          [self doPriceAlertsList:gAccountId];
          
-     } failure:^(NSError *error) {
+     } failure:^(NSDictionary *error) {
          NSLog(@"Failure");
      }];
 }
@@ -274,7 +274,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          NSLog(@"Success!  %@", responseObject);
          [self doPositionsList:gAccountId];
          
-     } failure:^(NSError *error) {
+     } failure:^(NSDictionary *error) {
          NSLog(@"Failure");
      }];
 }
@@ -288,7 +288,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          NSLog(@"Success!  %@", responseObject);
          [self doCandlesList];
          
-     } failure:^(NSError *error) {
+     } failure:^(NSDictionary *error) {
          NSLog(@"Failure");
      }];
 }
@@ -304,7 +304,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          NSLog(@"Success!  %@", responseObject);
          [self doCreateOrder:gAccountId];
          
-     } failure:^(NSError *error) {
+     } failure:^(NSDictionary *error) {
          NSLog(@"Failure");
      }];
 }
@@ -330,7 +330,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          gOrderId = [responseObject valueForKey:@"id"];
          [self doOrdersList:gAccountId];
          
-     } failure:^(NSError *error) {
+     } failure:^(NSDictionary *error) {
          NSLog(@"Failure");
      }];
 }
@@ -344,7 +344,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          NSLog(@"Success!  %@", responseObject);
          [self doChangeOrder:gAccountId withOrderId:gOrderId];
          
-     } failure:^(NSError *error) {
+     } failure:^(NSDictionary *error) {
          NSLog(@"Failure");
      }];
 }
@@ -372,7 +372,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          gMaxOrderIdForOrderPoll = [NSNumber numberWithInt:0];
          [self doPollOrder:gAccountId withMaxOrderId:gMaxOrderIdForOrderPoll];
          
-     } failure:^(NSError *error) {
+     } failure:^(NSDictionary *error) {
          NSLog(@"Failure");
      }];
 }
@@ -389,7 +389,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          gMaxOrderIdForOrderPoll = [responseObject valueForKey:@"max_order_id"];
          [self doDeleteOrder:gAccountId withOrderId:gOrderId];
          
-     } failure:^(NSError *error) {
+     } failure:^(NSDictionary *error) {
          NSLog(@"Failure");
      }];
 }
@@ -405,7 +405,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          NSLog(@"Success!  Order Deleted: %@", responseObject);
          [self doOpenTrade:gAccountId];
          
-     } failure:^(NSError *error) {
+     } failure:^(NSDictionary *error) {
          NSLog(@"Failure");
      }];
 }
@@ -430,7 +430,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          gTradeId = [[responseObject valueForKey:@"ids"] objectAtIndex:0];
          [self doTradesList:gAccountId];         
          
-     } failure:^(NSError *error) {
+     } failure:^(NSDictionary *error) {
          NSLog(@"Failure");
      }];
 }
@@ -445,7 +445,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          NSLog(@"Success!  %@", responseObject);
          [self doChangeTrade:gAccountId withTradeId:gTradeId];
          
-     } failure:^(NSError *error) {
+     } failure:^(NSDictionary *error) {
          NSLog(@"Failure");
      }];
 }
@@ -466,7 +466,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          gMaxTradeIdForTradePoll = [NSNumber numberWithInt:0];
          [self doPollTrade:gAccountId withMaxTradeId:gMaxTradeIdForTradePoll];
          
-     } failure:^(NSError *error) {
+     } failure:^(NSDictionary *error) {
          NSLog(@"Failure");
      }];
 }
@@ -483,7 +483,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          gMaxTradeIdForTradePoll = [responseObject valueForKey:@"max_trade_id"];
          [self doDeleteTrade:gAccountId withTradeId:gTradeId];
          
-     } failure:^(NSError *error) {
+     } failure:^(NSDictionary *error) {
          NSLog(@"Failure");
      }];
 }
@@ -499,7 +499,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
      {
          NSLog(@"Success!  Trade Closed: %@", responseObject);
          
-     } failure:^(NSError *error) {
+     } failure:^(NSDictionary *error) {
          NSLog(@"Failure");
      }];
 }

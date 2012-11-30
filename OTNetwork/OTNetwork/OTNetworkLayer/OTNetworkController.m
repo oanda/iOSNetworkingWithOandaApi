@@ -8,6 +8,7 @@
 
 #import "OTNetworkController.h"
 //#import "AFJSONRequestOperation.h"
+#import "AFHTTPRequestOperation.h"
 #import "JSONKit.h"
 
 // TODO: for now we keep all these properties as private, need to review overall design to decide which to expose, if any.
@@ -22,7 +23,7 @@
 
 @implementation OTNetworkController
 
-#define USE_JSONKIT     // comment out to parse with iOS5 NSJSONSerialization
+//#define USE_JSONKIT     // comment out to parse with iOS5 NSJSONSerialization
 
 
 - (id)init
@@ -38,7 +39,7 @@
     return self;
 }
 
-#pragma mark User
+#pragma mark Accessing and Managing User Accounts
 
 - (void)accountListForUsername:(NSString *)username
                        success:(NetworkSuccessBlock)successBlock
@@ -69,8 +70,7 @@
         successBlock(jsonDict);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"OTNetworkController::accountList FAILURE : %@", error);
-        failureBlock(error);
+        [self handleFailureUsingBlock:failureBlock withOperation:operation withError:error];
     }];
 }
 
@@ -99,12 +99,11 @@
         successBlock(jsonDict);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"OTNetworkController::accountStatus FAILURE : %@", error);
-        failureBlock(error);
+        [self handleFailureUsingBlock:failureBlock withOperation:operation withError:error];
     }];
 }
 
-#pragma mark Rate
+#pragma mark Quoting Tradable Instruments
 - (void)rateListSymbolsSuccess:(NetworkSuccessBlock)successBlock
                        failure:(NetworkFailBlock)failureBlock
 {
@@ -128,8 +127,7 @@
         successBlock(jsonDict);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"OTNetworkController::rateListSymbols FAILURE : %@", error);
-        failureBlock(error);
+        [self handleFailureUsingBlock:failureBlock withOperation:operation withError:error];
     }];
 }
 
@@ -169,8 +167,7 @@
          successBlock(jsonDict);
          
      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"OTNetworkController::rateQuote FAILURE : %@", error);
-         failureBlock(error);
+         [self handleFailureUsingBlock:failureBlock withOperation:operation withError:error];
      }];
 }
 
@@ -208,12 +205,11 @@
         successBlock(jsonDict);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"OTNetworkController::rateHistory FAILURE : %@", error);
-        failureBlock(error);
+        [self handleFailureUsingBlock:failureBlock withOperation:operation withError:error];
     }];
 }
 
-#pragma mark Reports
+#pragma mark Getting Reports on Past and Current Activities
 - (void)transactionListForAccountId:(NSNumber *)accountId
                             success:(NetworkSuccessBlock)successBlock
                             failure:(NetworkFailBlock)failureBlock
@@ -239,8 +235,7 @@
         successBlock(jsonDict);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"OTNetworkController::transactionList FAILURE : %@", error);
-        failureBlock(error);
+        [self handleFailureUsingBlock:failureBlock withOperation:operation withError:error];
     }];
 }
 
@@ -269,8 +264,7 @@
         successBlock(jsonDict);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"OTNetworkController::tradesList FAILURE : %@", error);
-        failureBlock(error);
+        [self handleFailureUsingBlock:failureBlock withOperation:operation withError:error];
     }];
 }
 
@@ -299,8 +293,7 @@
         successBlock(jsonDict);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"OTNetworkController::ordersList FAILURE : %@", error);
-        failureBlock(error);
+        [self handleFailureUsingBlock:failureBlock withOperation:operation withError:error];
     }];
 }
 
@@ -360,8 +353,7 @@
         successBlock(jsonDict);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"OTNetworkController::positionsList FAILURE : %@", error);
-        failureBlock(error);
+        [self handleFailureUsingBlock:failureBlock withOperation:operation withError:error];
     }];
 }
 
@@ -390,14 +382,13 @@
         
         successBlock(jsonDict);
         
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"OTNetworkController::rateLimitsList FAILURE : %@", error);
-        failureBlock(error);
-    }];
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self handleFailureUsingBlock:failureBlock withOperation:operation withError:error];
+     }];
     */
 }
 
-#pragma mark Positions
+#pragma mark Handling Positions
 - (void)closePositionForAccount:(NSNumber *)accountId
                          symbol:(NSString *)symbol
                           price:(NSDecimalNumber *)price
@@ -432,12 +423,11 @@
         successBlock(jsonDict);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"OTNetworkController::closePosition FAILURE : %@", error);
-        failureBlock(error);
+        [self handleFailureUsingBlock:failureBlock withOperation:operation withError:error];
     }];
 }
 
-#pragma mark Orders
+#pragma mark Creating and Managing LimitOrders
 - (void)createOrderForAccount:(NSNumber *)accountId
                        symbol:(NSString *)symbol
                         units:(NSNumber *)units
@@ -499,8 +489,7 @@
         successBlock(jsonDict);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"OTNetworkController::createOrder FAILURE : %@", error);
-        failureBlock(error);
+        [self handleFailureUsingBlock:failureBlock withOperation:operation withError:error];
     }];
 }
 
@@ -555,8 +544,7 @@
         successBlock(nil);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"OTNetworkController::changeOrder FAILURE : %@", error);
-        failureBlock(error);
+        [self handleFailureUsingBlock:failureBlock withOperation:operation withError:error];
     }];
 }
 
@@ -591,8 +579,7 @@
         successBlock(jsonDict);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"OTNetworkController::pollOrder FAILURE : %@", error);
-        failureBlock(error);
+        [self handleFailureUsingBlock:failureBlock withOperation:operation withError:error];
     }];
 }
 
@@ -622,12 +609,11 @@
         successBlock(jsonDict);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"OTNetworkController::deleteOrder FAILURE : %@", error);
-        failureBlock(error);
+        [self handleFailureUsingBlock:failureBlock withOperation:operation withError:error];
     }];
 }
 
-#pragma mark Trades
+#pragma mark Creating and Managing MarketOrders Trades
 - (void)openTradeForAccount:(NSNumber *)accountId
                      symbol:(NSString *)symbol
                       units:(NSNumber *)units
@@ -689,8 +675,7 @@
         successBlock(jsonDict);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"OTNetworkController::openTrade FAILURE : %@", error);
-        failureBlock(error);
+        [self handleFailureUsingBlock:failureBlock withOperation:operation withError:error];
     }];
 }
 
@@ -723,8 +708,7 @@
         successBlock(nil);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"OTNetworkController::changeTrade FAILURE : %@", error);
-        failureBlock(error);
+        [self handleFailureUsingBlock:failureBlock withOperation:operation withError:error];
     }];
 }
 
@@ -759,8 +743,7 @@
         successBlock(jsonDict);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"OTNetworkController::pollTrade FAILURE : %@", error);
-        failureBlock(error);
+        [self handleFailureUsingBlock:failureBlock withOperation:operation withError:error];
     }];
 }
 
@@ -796,8 +779,7 @@
         successBlock(jsonDict);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"OTNetworkController::closeTrade FAILURE : %@", error);
-        failureBlock(error);
+        [self handleFailureUsingBlock:failureBlock withOperation:operation withError:error];
     }];
 }
 
@@ -829,6 +811,32 @@
     [parameters setObject:_userPassword forKey:@"password"];
     */
     return parameters;
+}
+
+- (void) handleFailureUsingBlock:(NetworkFailBlock)failureBlock
+                   withOperation:(AFHTTPRequestOperation *)operation
+                       withError:(NSError *)error
+{
+    // parse and extract the struct describing the error
+#if defined(USE_JSONKIT)
+    NSDictionary *jsonDict = [operation.responseString objectFromJSONString];
+    NSAssert1(jsonDict, @"%@: Error parsing with JSONKit", [self class]);
+#else
+    NSError *jsonParseError = nil;
+    NSDictionary *jsonDict =
+    [NSJSONSerialization JSONObjectWithData: [operation.responseString dataUsingEncoding:NSUTF8StringEncoding]
+                                    options: NSJSONReadingMutableContainers
+                                      error: &jsonParseError];
+    NSAssert2(jsonDict, @"%@: Error parsing JSON: %@", [self class], [error localizedDescription]);
+#endif
+    
+    NSMutableDictionary *returnDict = [jsonDict mutableCopy];
+    [returnDict setObject:[NSNumber numberWithInteger:[operation.response statusCode]] forKey:@"http status code"];
+    [returnDict setObject:error forKey:@"net error"];
+    
+    NSLog(@"%@ FAILURE : %@", NSStringFromSelector(_cmd), returnDict);
+    
+    failureBlock(returnDict);
 }
 
 @end

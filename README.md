@@ -25,7 +25,7 @@ These are the simple steps to follow to incorporate this library into your iOS p
     * or manually include <b>OTNetworkController.h</b> and <b>OTNertowkController.m</b>, as well as all third party libraries like:
         * <b>AFNetworking</b>
         * <b>JSONKit</b>
-<br/><br/>    
+<br/><br/>   
 2. Add these frameworks to your app:
     * <b>MobileCoreServices.framework</b>
     * <b>SystemConfiguration.framework</b>
@@ -57,7 +57,14 @@ Notes on the OTNetwork Library
 * All methods require a <b>Success</b> block and a <b>Failure</b> block to be passed, and either would be triggered asynchronously depending on the outcome of network request.  And these blocks all follow the same convention:
 
             typedef void (^NetworkSuccessBlock)(NSDictionary *result);
-            typedef void (^NetworkFailBlock)(NSError *error);
+            typedef void (^NetworkFailBlock)(NSDictionary *error);
+
+* If an error occurs, the FailBlock above would return an NSDictionary with the following items to help you debug:
+
+            "code" : OANDA error code, may or may not be the same as the HTTP status code
+            "http status code" : response of the HTTP request to the network
+            "message" : a description of the error which occurred, intended for developers
+            "net error" : full error string received, intended for developers
 
 Notes on the OTNetworkDemo App
 ------------------------------
@@ -86,7 +93,7 @@ Getting updated rates (ie. prices) for tradable currency pairs from <b>OANDA</b>
                  }
                  
                  allowRatesFetching = YES;
-             } failure:^(NSError *error) {
+             } failure:^(NSDictionary *error) {
                  NSLog(@"Failure");
              }];
 
@@ -100,7 +107,7 @@ Getting updated rates (ie. prices) for tradable currency pairs from <b>OANDA</b>
                  [self.tableView reloadData];
                  //NSLog(@"Rates: %@", responseObject);
                  
-             } failure:^(NSError *error) {
+             } failure:^(NSDictionary *error) {
                  NSLog(@"Failure");
              }];
 
@@ -123,7 +130,7 @@ You need a valid username with an active account to do this.  In fact, at this p
                  NSDictionary *anAccount = [[responseObject objectForKey:@"array"] lastObject];
                  gAccountId = [anAccount valueForKey:@"id"];
                                   
-             } failure:^(NSError *error) {
+             } failure:^(NSDictionary *error) {
                  NSLog(@"Failure");
              }];
 
@@ -146,7 +153,7 @@ You need a valid username with an active account to do this.  In fact, at this p
                  gOrderId = [responseObject valueForKey:@"id"];
                  // do something with gOrderId somewhere else
                                   
-             } failure:^(NSError *error) {
+             } failure:^(NSDictionary *error) {
                  NSLog(@"Failure");
              }];
 

@@ -14,7 +14,7 @@
 #define kUserName @"username"
 
 typedef void (^NetworkSuccessBlock)(NSDictionary *result);
-typedef void (^NetworkFailBlock)(NSError *error);
+typedef void (^NetworkFailBlock)(NSDictionary *error); //(NSDictionary *error);
 
 /** This class is a wrapper for low level REST API network calls, and is meant to provide a consistent means for higher networking layers to send and receive data.
   
@@ -24,14 +24,32 @@ typedef void (^NetworkFailBlock)(NSError *error);
  - a SuccessBlock
  - a FailBlock
  
+ Please be aware of these typedef for the blocks mentioned:
+ 
+    typedef void (^NetworkSuccessBlock)(NSDictionary *result);
+    typedef void (^NetworkFailBlock)(NSDictionary *error);
+ 
  If the network replies our request by delivering the data we seek, the data is converted to NSDictionary, and
- the SuccessBlock will be triggered with this NSDictionary passed in as argument.  Similarly, a failed network
- request will trigger the FailBlock with an error code.
+ the SuccessBlock will be triggered with this NSDictionary passed in as argument.
  
- Also please be aware of these typedef for the blocks mentioned:
- 
-     typedef void (^NetworkSuccessBlock)(NSDictionary *result);
-     typedef void (^NetworkFailBlock)(NSError *error);
+ Similarly, a failed network request will trigger the FailBlock with an NSDictionary describing the error.  An example of this structure would look this:
+     {
+        code = 9;
+        "http status code" = 500;
+        message = "Internal Server Error";
+        "net error" = "Error Domain=AFNetworkingErrorDomain Code=-1011 \"Expected status code in (200-299), got 500\" 
+            UserInfo=0x905bd60 {NSLocalizedRecoverySuggestion={\n\t\"code\" : 9,\n\t\"message\" : \"Internal 
+            Server Error\"\n} \n, AFNetworkingOperationFailingURLRequestErrorKey=<NSMutableURLRequest 
+            http://api-sandbox.oanda.com/users/kyley1/accounts?>, NSErrorFailingURLKey=http://api-sandbox.
+            oanda.com/users/kyley1/accounts?, NSLocalizedDescription=Expected status code in (200-299), got 500, 
+            AFNetworkingOperationFailingURLResponseErrorKey=<NSHTTPURLResponse: 0x71465d0>}";
+     }
+
+ where:
+    "code" : OANDA error code, may or may not be the same as the HTTP status code
+    "http status code" : response of the HTTP request to the network
+    "message" : a description of the error which occurred, intended for developers
+    "net error" : full error string received, intended for developers
  
  For additional information on Objective-C blocks, please refer to
  http://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Blocks/

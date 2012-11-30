@@ -37,7 +37,7 @@ describe(@"The Network Controller", ^{
                      //NSLog(@"Success! %@", responseObject);
                      account = [[responseObject objectForKey:@"array"] lastObject];
                      gAccountId = [account valueForKey:@"id"];
-                 } failure:^(NSError *error) {
+                 } failure:^(NSDictionary *error) {
                      NSLog(@"Failure");
                  }];
                 
@@ -54,7 +54,7 @@ describe(@"The Network Controller", ^{
                  {
                      //NSLog(@"Success! %@", responseObject);
                      fetchedData = responseObject;
-                 } failure:^(NSError *error) {
+                 } failure:^(NSDictionary *error) {
                      NSLog(@"Failure");
                  }];
                 
@@ -78,7 +78,7 @@ describe(@"The Network Controller", ^{
                          [symbolsArray addObject:[NSString stringWithString:[symbolDict valueForKey:@"instrument"]]];
                      }
                      
-                 } failure:^(NSError *error) {
+                 } failure:^(NSDictionary *error) {
                      NSLog(@"Failure");
                  }];
                 
@@ -95,7 +95,7 @@ describe(@"The Network Controller", ^{
                      //NSLog(@"Success!  %@", responseObject);
                      listRates = [responseObject objectForKey:@"prices"];
                      
-                 } failure:^(NSError *error) {
+                 } failure:^(NSDictionary *error) {
                      NSLog(@"Failure");
                  }];
                 
@@ -114,7 +114,7 @@ describe(@"The Network Controller", ^{
                      //NSLog(@"Success!  %@", responseObject);
                      candlesList = [responseObject objectForKey:@"candles"];
                      
-                 } failure:^(NSError *error) {
+                 } failure:^(NSDictionary *error) {
                      NSLog(@"Failure");
                  }];
                 
@@ -134,7 +134,7 @@ describe(@"The Network Controller", ^{
                      //NSLog(@"Success!  %@", responseObject);
                      fetchedData = responseObject;
                      
-                 } failure:^(NSError *error) {
+                 } failure:^(NSDictionary *error) {
                      NSLog(@"Failure");
                  }];
                 
@@ -151,7 +151,7 @@ describe(@"The Network Controller", ^{
                      //NSLog(@"Success!  %@", responseObject);
                      fetchedData = responseObject;
                      
-                 } failure:^(NSError *error) {
+                 } failure:^(NSDictionary *error) {
                      NSLog(@"Failure");
                  }];
                 
@@ -168,7 +168,7 @@ describe(@"The Network Controller", ^{
                      //NSLog(@"Success!  %@", responseObject);
                      fetchedData = responseObject;
                      
-                 } failure:^(NSError *error) {
+                 } failure:^(NSDictionary *error) {
                      NSLog(@"Failure");
                  }];
                 
@@ -185,7 +185,7 @@ describe(@"The Network Controller", ^{
                      //NSLog(@"Success!  %@", responseObject);
                      fetchedData = responseObject;
                      
-                 } failure:^(NSError *error) {
+                 } failure:^(NSDictionary *error) {
                      NSLog(@"Failure");
                  }];
                 
@@ -202,7 +202,7 @@ describe(@"The Network Controller", ^{
                      //NSLog(@"Success!  %@", responseObject);
                      fetchedData = responseObject;
                      
-                 } failure:^(NSError *error) {
+                 } failure:^(NSDictionary *error) {
                      NSLog(@"Failure");
                  }];
                 
