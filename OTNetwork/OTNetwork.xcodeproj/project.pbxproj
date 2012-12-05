@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C6D99B5166FED690066EC9E /* libKiwi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C6D99B4166FED690066EC9E /* libKiwi.a */; };
 		8CBF7BE2166FDF280026AA58 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF7BD0166FDF280026AA58 /* AFHTTPClient.m */; };
 		8CBF7BE3166FDF280026AA58 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF7BD2166FDF280026AA58 /* AFHTTPRequestOperation.m */; };
 		8CBF7BE4166FDF280026AA58 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF7BD4166FDF280026AA58 /* AFImageRequestOperation.m */; };
@@ -17,7 +18,6 @@
 		8CBF7BE9166FDF280026AA58 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF7BDF166FDF280026AA58 /* AFXMLRequestOperation.m */; };
 		8CBF7BEA166FDF280026AA58 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF7BE1166FDF280026AA58 /* UIImageView+AFNetworking.m */; };
 		8CBF7BEE166FDF300026AA58 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF7BED166FDF300026AA58 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		8CBF7BF0166FDF7D0026AA58 /* libKiwi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CBF7BEF166FDF7D0026AA58 /* libKiwi.a */; };
 		8CBF7BF3166FE6100026AA58 /* OTNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF7BF2166FE6100026AA58 /* OTNetworkController.m */; };
 		8CDA19D816666C0700EBCA42 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDA19D716666C0700EBCA42 /* Foundation.framework */; };
 		8CDA19E716666C0700EBCA42 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDA19E616666C0700EBCA42 /* SenTestingKit.framework */; };
@@ -53,6 +53,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8C6D99B4166FED690066EC9E /* libKiwi.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libKiwi.a; path = "ThirdParty/Kiwi/build/Release-iphoneos/libKiwi.a"; sourceTree = "<group>"; };
 		8CBF7BCF166FDF280026AA58 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		8CBF7BD0166FDF280026AA58 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		8CBF7BD1166FDF280026AA58 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -74,7 +75,6 @@
 		8CBF7BE1166FDF280026AA58 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		8CBF7BEC166FDF300026AA58 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		8CBF7BED166FDF300026AA58 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
-		8CBF7BEF166FDF7D0026AA58 /* libKiwi.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libKiwi.a; path = "ThirdParty/Kiwi/build/Release-iphoneos/libKiwi.a"; sourceTree = "<group>"; };
 		8CBF7BF1166FE6100026AA58 /* OTNetworkController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OTNetworkController.h; path = OTNetworkLayer/OTNetworkController.h; sourceTree = SOURCE_ROOT; };
 		8CBF7BF2166FE6100026AA58 /* OTNetworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OTNetworkController.m; path = OTNetworkLayer/OTNetworkController.m; sourceTree = SOURCE_ROOT; };
 		8CBF7BF4166FE61C0026AA58 /* OTNetwork-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OTNetwork-Prefix.pch"; path = "OTNetworkLayer/OTNetwork-Prefix.pch"; sourceTree = SOURCE_ROOT; };
@@ -104,7 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CBF7BF0166FDF7D0026AA58 /* libKiwi.a in Frameworks */,
+				8C6D99B5166FED690066EC9E /* libKiwi.a in Frameworks */,
 				8CDA1A3E1666707900EBCA42 /* SystemConfiguration.framework in Frameworks */,
 				8CDA1A3C1666706E00EBCA42 /* MobileCoreServices.framework in Frameworks */,
 				8CDA1A3316666DDB00EBCA42 /* UIKit.framework in Frameworks */,
@@ -157,7 +157,7 @@
 		8CDA19C916666C0700EBCA42 = {
 			isa = PBXGroup;
 			children = (
-				8CBF7BEF166FDF7D0026AA58 /* libKiwi.a */,
+				8C6D99B4166FED690066EC9E /* libKiwi.a */,
 				8CDA19D916666C0700EBCA42 /* OTNetwork */,
 				8CDA19EE16666C0700EBCA42 /* OTNetworkTests */,
 				8CDA19D616666C0700EBCA42 /* Frameworks */,

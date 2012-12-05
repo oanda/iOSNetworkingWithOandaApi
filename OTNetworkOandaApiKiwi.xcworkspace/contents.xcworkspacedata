@@ -11,6 +11,6 @@
       location = "group:OTNetworkDemo/OTNetworkDemo.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:OTNetwork/OTNetwork/ThirdParty/Kiwi/Kiwi.xcodeproj">
+      location = "group:OTNetwork/ThirdParty/Kiwi/Kiwi.xcodeproj">
    </FileRef>
 </Workspace>
