@@ -21,10 +21,13 @@ Steps for Integration
 These are the simple steps to follow to incorporate this library into your iOS project:
 
 1. Add the library itself.  There are two ways to do this:
-    * include <b>OTNetwork.xcodeproj</b> as a dependency
-    * or manually include <b>OTNetworkController.h</b> and <b>OTNertowkController.m</b>, as well as all third party libraries like:
-        * <b>AFNetworking</b>
-        * <b>JSONKit</b>
+    * manually include the library folder <b>/OTNetwork/OTNetworkLayer</b> into your project.  This effectively includes <b>OTNetworkController.h</b> and <b>OTNertowkController.m</b>
+    * or include <b>OTNetwork.xcodeproj</b> as a dependency (this is experimental, you may need to resolve some build issues)
+    
+    Please note you will need these third party libraries as well:
+
+    * <b>AFNetworking</b>
+    * <b>JSONKit</b>
 <br/><br/>   
 2. Add these frameworks to your app:
     * <b>MobileCoreServices.framework</b>

@@ -86,7 +86,6 @@
 		8CDA19F216666C0700EBCA42 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8CDA1A3216666DDB00EBCA42 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8CDA1A3416666E1D00EBCA42 /* OTNetworkLayerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTNetworkLayerSpec.m; sourceTree = "<group>"; };
-		8CDA1A391666700800EBCA42 /* libKiwi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKiwi.a; path = "OTNetwork/ThirdParty/Kiwi/build/Release-iphoneos/libKiwi.a"; sourceTree = "<group>"; };
 		8CDA1A3B1666706E00EBCA42 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		8CDA1A3D1666707900EBCA42 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -157,7 +156,6 @@
 		8CDA19C916666C0700EBCA42 = {
 			isa = PBXGroup;
 			children = (
-				8C6D99B4166FED690066EC9E /* libKiwi.a */,
 				8CDA19D916666C0700EBCA42 /* OTNetwork */,
 				8CDA19EE16666C0700EBCA42 /* OTNetworkTests */,
 				8CDA19D616666C0700EBCA42 /* Frameworks */,
@@ -177,7 +175,7 @@
 		8CDA19D616666C0700EBCA42 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8CDA1A391666700800EBCA42 /* libKiwi.a */,
+				8C6D99B4166FED690066EC9E /* libKiwi.a */,
 				8CDA1A3D1666707900EBCA42 /* SystemConfiguration.framework */,
 				8CDA1A3B1666706E00EBCA42 /* MobileCoreServices.framework */,
 				8CDA1A3216666DDB00EBCA42 /* UIKit.framework */,
