@@ -24,9 +24,10 @@ These are the simple steps to follow to incorporate this library into your iOS p
 
     Please note you will need these third party libraries as well:
 
-    * <b>AFNetworking</b>
-    * <b>JSONKit</b>
-<br/><br/>   
+<ul><li><b>AFNetworking</b></li>
+<li><b>JSONKit</b></li>
+</ul>
+<br/><br/>
 2. Add these frameworks to your app:
     * <b>MobileCoreServices.framework</b>
     * <b>SystemConfiguration.framework</b>
