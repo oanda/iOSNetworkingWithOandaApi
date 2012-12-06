@@ -20,18 +20,26 @@ Steps for Integration
 
 These are the simple steps to follow to incorporate this library into your iOS project:
 
-1. Add the library itself.  Manually include the library folder <b>/OTNetwork/OTNetworkLayer</b> into your project.  This effectively includes <b>OTNetworkController.h</b> and <b>OTNertowkController.m</b>
+1. Add the library itself.  There are two ways to do this:
+    * Manually include the library folder <b>/OTNetwork/OTNetworkLayer</b> into your project.  This effectively includes <b>OTNetworkController.h</b> and <b>OTNertowkController.m</b>
 
-    Please note you will need these third party libraries as well:
+        Please note you will need these third party libraries as well:
 
-<ul><li><b>AFNetworking</b></li>
-<li><b>JSONKit</b></li>
-</ul>
+        <ul><li><b>AFNetworking</b></li>
+        <li><b>JSONKit</b></li>
+        </ul>
+<br/>        
+    * Or you could install the library via CocoaPods (assuming you have been following this workflow):
+        * copy the included <b>iOSNetworkingWithOandaApi.podspec</b> to the location of your project's <b>Podfile</b>
+        * edit your <b>Podfile</b>, and include this line:
+        
+                pod 'iOSNetworkingWithOandaApi', :podspec => 'iOSNetworkingWithOandaApi.podspec'
+        
+        * run <b>pod install</b> to update your .xcworkspace.  You should now find <b>iOSNetworkingWithOandaApi</b> as one of the pods installed.
 <br/><br/>
 2. Add these frameworks to your app:
     * <b>MobileCoreServices.framework</b>
     * <b>SystemConfiguration.framework</b>
-    * <b>libOTNetwork.a</b> (if you chose to include the .xcodeproj as mentioned above)
 <br/><br/>
 3. Import <b>OTNetworkController.h</b> in relevant source files in your project
 <br/><br/>
