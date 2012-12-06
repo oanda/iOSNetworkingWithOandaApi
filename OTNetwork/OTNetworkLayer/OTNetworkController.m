@@ -322,8 +322,7 @@
         successBlock(jsonDict);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"OTNetworkController::priceAlertsList FAILURE : %@", error);
-        failureBlock(error);
+        [self handleFailureUsingBlock:failureBlock withOperation:operation withError:error];
     }];
 }
 
