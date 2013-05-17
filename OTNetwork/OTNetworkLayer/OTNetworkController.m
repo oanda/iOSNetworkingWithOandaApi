@@ -473,8 +473,7 @@ static NSDateFormatter *sRFC3339DateFormatter;
     NSString *expiryTimeTemp = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970] + [expiryInSeconds intValue]];
     NSString *expiryTime = [self dateFromRFC3339Date:expiryTimeTemp];
 
-    //[parameters setObject:expiryTime forKey:@"expiry"];
-    [parameters setObject:@"2013-05-17T22%3A12%3A34Z" forKey:@"expiry"];
+    [parameters setObject:expiryTime forKey:@"expiry"];
     
     // set the optional params
 	if (lowPrice) {
@@ -494,6 +493,7 @@ static NSDateFormatter *sRFC3339DateFormatter;
 	}
     
     NSString *pathString = [NSString stringWithFormat:@"accounts/%@/orders", [accountId stringValue]];
+    _afc.parameterEncoding = AFFormURLParameterEncoding;
     [_afc postPath:pathString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         // return the whole parsed JSON object
@@ -538,8 +538,10 @@ static NSDateFormatter *sRFC3339DateFormatter;
     [parameters setObject:[units stringValue] forKey:@"units"];
     [parameters setObject:[NSString stringWithFormat:@"%.5f", [price floatValue]] forKey:@"price"];
 	[parameters setObject:type forKey:@"side"];
+        
+    NSString *expiryTimeTemp = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970] + [expiryInSeconds intValue]];
+    NSString *expiryTime = [self dateFromRFC3339Date:expiryTimeTemp];
     
-    NSString *expiryTime = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970] + [expiryInSeconds intValue]];
     [parameters setObject:expiryTime forKey:@"expiry"];
     
     // set the optional params

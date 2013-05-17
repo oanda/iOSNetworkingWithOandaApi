@@ -380,7 +380,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
                                         orderId:orderId
                                          symbol:@"EUR/GBP"                      // TODO: investigate, no visible effect
                                           units:[NSNumber numberWithInt:456]
-                                           type:@"long"                         // TODO: investigate, no visible effect
+                                           type:@"buy"                         // TODO: investigate, no visible effect
                                           price:[[NSDecimalNumber alloc] initWithFloat:0.80443]
                                          expiry:[NSNumber numberWithInt:700]  // set to expire in 10 minutes
                               minExecutionPrice:[[NSDecimalNumber alloc] initWithFloat:0.80343]     // TODO: investigate, no visible effect
@@ -439,7 +439,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
     [self.networkDelegate openTradeForAccount:accountId
                                 symbol:@"AUD/JPY"
                                  units:[NSNumber numberWithInt:456]
-                                  type:@"long"
+                                  type:@"buy"
                                  price:nil
                      minExecutionPrice:nil
                      maxExecutionPrice:nil
