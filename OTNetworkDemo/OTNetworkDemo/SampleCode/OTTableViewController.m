@@ -182,7 +182,7 @@
          
          allowRatesFetching = YES;
      } failure:^(NSDictionary *error) {
-         NSLog(@"Failure");
+         NSLog(@"soGetRateList Failure");
      }];
 }
 
@@ -200,7 +200,8 @@
         if (numReps == 0)
         {
             // Start running internal tests for network calls
-            [self doAccountList];
+            //[self doAccountList];
+            [self doAccountStatus:@3973087];
         }
         else
         {
@@ -216,7 +217,7 @@
                  //NSLog(@"Rates: %@", responseObject);
                  
              } failure:^(NSDictionary *error) {
-                 NSLog(@"Failure");
+                 NSLog(@"doGetRatePrices Failure");
              }];
         }
         
@@ -251,7 +252,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          [self doAccountStatus:gAccountId];
          
      } failure:^(NSDictionary *error) {
-         NSLog(@"Failure");
+         NSLog(@"doAccountList Failure");
      }];
 }
 
@@ -262,10 +263,11 @@ static NSNumber *gMaxTradeIdForTradePoll;
                                      success:^(NSDictionary *responseObject)
      {
          NSLog(@"Success!  %@", responseObject);
+         gAccountId = accountId;
          [self doTransactionsList:gAccountId];
          
      } failure:^(NSDictionary *error) {
-         NSLog(@"Failure");
+         NSLog(@"doAccountStatus Failure");
      }];
 }
 
@@ -279,22 +281,24 @@ static NSNumber *gMaxTradeIdForTradePoll;
          [self doPriceAlertsList:gAccountId];
          
      } failure:^(NSDictionary *error) {
-         NSLog(@"Failure");
+         NSLog(@"doTransactionsList Failure");
      }];
 }
 
 -(void) doPriceAlertsList:(NSNumber *)accountId
 {
+    
     // Test getting the list of price alerts
-    [self.networkDelegate priceAlertsListForAccountId:accountId
-                                       success:^(NSDictionary *responseObject)
-     {
-         NSLog(@"Success!  %@", responseObject);
-         [self doPositionsList:gAccountId];
-         
-     } failure:^(NSDictionary *error) {
-         NSLog(@"Failure");
-     }];
+//    [self.networkDelegate priceAlertsListForAccountId:accountId
+//                                       success:^(NSDictionary *responseObject)
+//     {
+//         NSLog(@"Success!  %@", responseObject);
+//         [self doPositionsList:gAccountId];
+//         
+//     } failure:^(NSDictionary *error) {
+//         NSLog(@"Failure");
+//     }];
+    [self doPositionsList:gAccountId];
 }
 
 -(void) doPositionsList:(NSNumber *)accountId
@@ -307,7 +311,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          [self doCandlesList];
          
      } failure:^(NSDictionary *error) {
-         NSLog(@"Failure");
+         NSLog(@"doPositionsList Failure");
      }];
 }
 
@@ -323,7 +327,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          [self doCreateOrder:gAccountId];
          
      } failure:^(NSDictionary *error) {
-         NSLog(@"Failure");
+         NSLog(@"doCandlesList Failure");
      }];
 }
 
@@ -332,9 +336,9 @@ static NSNumber *gMaxTradeIdForTradePoll;
     // Test creating a new purchase order
     
     [self.networkDelegate createOrderForAccount:accountId
-                                  symbol:@"EUR/GBP"
+                                  symbol:@"EUR_GBP"
                                    units:[NSNumber numberWithInt:123]
-                                    type:@"long"
+                                    type:@"buy"
                                    price:[[NSDecimalNumber alloc] initWithFloat:0.80443]
                                   expiry:[NSNumber numberWithInt:600]  // set to expire in 10 minutes
                        minExecutionPrice:nil
@@ -349,7 +353,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          [self doOrdersList:gAccountId];
          
      } failure:^(NSDictionary *error) {
-         NSLog(@"Failure");
+         NSLog(@"doCreateOrder Failure");
      }];
 }
 
@@ -363,7 +367,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          [self doChangeOrder:gAccountId withOrderId:gOrderId];
          
      } failure:^(NSDictionary *error) {
-         NSLog(@"Failure");
+         NSLog(@"doOrdersList Failure");
      }];
 }
 
@@ -391,7 +395,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          [self doPollOrder:gAccountId withMaxOrderId:gMaxOrderIdForOrderPoll];
          
      } failure:^(NSDictionary *error) {
-         NSLog(@"Failure");
+         NSLog(@"doChangeOrder Failure");
      }];
 }
 

@@ -39,6 +39,8 @@
 @property (nonatomic, copy) NSString *serverUrl;
 @end
 
+static NSDateFormatter *sRFC3339DateFormatter;
+
 @implementation OTNetworkController
 
 //#define USE_JSONKIT     // comment out to parse with iOS5 NSJSONSerialization
@@ -48,7 +50,7 @@
 {
     self = [super init];
     if (self) {
-        _serverUrl = @"http://api-sandbox.oanda.com/";
+        _serverUrl = @"http://api-sandbox.oanda.com/v1/";
         
         NSURL *url = [NSURL URLWithString:_serverUrl];
         _afc = [AFHTTPClient clientWithBaseURL:url];
@@ -128,7 +130,7 @@
     NSMutableDictionary *parameters;
     parameters = [self setupDefaultParams];
     
-    [_afc getPath:@"v1/instruments" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [_afc getPath:@"instruments" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         // extract the list of all symbol pairs available for trading
 #if defined(USE_JSONKIT)
@@ -166,7 +168,7 @@
     symbolsString = [symbolsString substringToIndex:[symbolsString length] - 1];
     [parameters setObject:symbolsString forKey:@"instruments"];
     
-    [_afc getPath:@"v1/instruments/price"
+    [_afc getPath:@"instruments/price"
         parameters:parameters
            success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
@@ -205,7 +207,7 @@
         [parameters setObject:[count stringValue] forKey:@"count"];
     }
     
-    NSString *pathString = [NSString stringWithFormat:@"v1/instruments/%@/candles", symbol];
+    NSString *pathString = [NSString stringWithFormat:@"instruments/%@/candles", symbol];
     [_afc getPath:pathString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         // return the whole parsed JSON object
@@ -423,7 +425,7 @@
         [parameters setObject:[price description] forKey:@"price"];
 	}
     
-    [_afc postPath:@"v1/position/close.json" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [_afc postPath:@"position/close.json" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         // return the whole parsed JSON object
 #if defined(USE_JSONKIT)
@@ -466,10 +468,13 @@
 	[parameters setObject:symbol forKey:@"instrument"];
     [parameters setObject:[units stringValue] forKey:@"units"];
     [parameters setObject:[NSString stringWithFormat:@"%.5f", [price floatValue]] forKey:@"price"];
-	[parameters setObject:type forKey:@"direction"];
+	[parameters setObject:type forKey:@"side"];
 
-    NSString *expiryTime = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970] + [expiryInSeconds intValue]];
-    [parameters setObject:expiryTime forKey:@"expiry"];
+    NSString *expiryTimeTemp = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970] + [expiryInSeconds intValue]];
+    NSString *expiryTime = [self dateFromRFC3339Date:expiryTimeTemp];
+
+    //[parameters setObject:expiryTime forKey:@"expiry"];
+    [parameters setObject:@"2013-05-17T22%3A12%3A34Z" forKey:@"expiry"];
     
     // set the optional params
 	if (lowPrice) {
@@ -532,7 +537,7 @@
 	[parameters setObject:symbol forKey:@"instrument"];
     [parameters setObject:[units stringValue] forKey:@"units"];
     [parameters setObject:[NSString stringWithFormat:@"%.5f", [price floatValue]] forKey:@"price"];
-	[parameters setObject:type forKey:@"direction"];
+	[parameters setObject:type forKey:@"side"];
     
     NSString *expiryTime = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970] + [expiryInSeconds intValue]];
     [parameters setObject:expiryTime forKey:@"expiry"];
@@ -656,7 +661,7 @@
 		[parameters setObject:[NSString stringWithFormat:@"%.5f", [price floatValue]] forKey:@"price"];
  	}
     if (type) {
-        [parameters setObject:type forKey:@"direction"];
+        [parameters setObject:type forKey:@"side"];
     }
 	if (lowPrice) {
         [parameters setObject:[NSString stringWithFormat:@"%.5f", [lowPrice floatValue]] forKey:@"lowLimit"];
@@ -854,6 +859,20 @@
     NSLog(@"%@ FAILURE : %@", NSStringFromSelector(_cmd), returnDict);
     
     failureBlock(returnDict);
+}
+
+-(NSString *)dateFromRFC3339Date:(NSString *)date
+{
+    if (sRFC3339DateFormatter == nil) {
+        sRFC3339DateFormatter = [[NSDateFormatter alloc] init];
+        NSAssert(sRFC3339DateFormatter != nil, @"Could not allocate NSDateFormatter");
+        [sRFC3339DateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+        [sRFC3339DateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+        [sRFC3339DateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+    }
+
+    NSDate *dateD = [[NSDate alloc] initWithTimeIntervalSince1970:[date doubleValue]];
+    return [sRFC3339DateFormatter stringFromDate:dateD];
 }
 
 @end
