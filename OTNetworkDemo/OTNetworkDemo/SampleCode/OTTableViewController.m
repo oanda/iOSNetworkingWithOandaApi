@@ -412,7 +412,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          [self doDeleteOrder:gAccountId withOrderId:gOrderId];
          
      } failure:^(NSDictionary *error) {
-         NSLog(@"Failure");
+         NSLog(@"doPollOrder Failure");
      }];
 }
 
@@ -428,7 +428,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          [self doOpenTrade:gAccountId];
          
      } failure:^(NSDictionary *error) {
-         NSLog(@"Failure");
+         NSLog(@"doDeleteOrder Failure");
      }];
 }
 
@@ -449,11 +449,11 @@ static NSNumber *gMaxTradeIdForTradePoll;
                                success:^(NSDictionary *responseObject)
      {
          NSLog(@"Success!  Trade Opened: %@", responseObject);
-         gTradeId = [[responseObject valueForKey:@"ids"] objectAtIndex:0];
+         gTradeId = [responseObject valueForKey:@"opened"];
          [self doTradesList:gAccountId];         
          
      } failure:^(NSDictionary *error) {
-         NSLog(@"Failure");
+         NSLog(@"doOpenTrade Failure");
      }];
 }
 
@@ -468,7 +468,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          [self doChangeTrade:gAccountId withTradeId:gTradeId];
          
      } failure:^(NSDictionary *error) {
-         NSLog(@"Failure");
+         NSLog(@"doTradeList Failure");
      }];
 }
 
@@ -489,7 +489,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          [self doPollTrade:gAccountId withMaxTradeId:gMaxTradeIdForTradePoll];
          
      } failure:^(NSDictionary *error) {
-         NSLog(@"Failure");
+         NSLog(@"doChangeTrade Failure");
      }];
 }
 
@@ -506,7 +506,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          [self doDeleteTrade:gAccountId withTradeId:gTradeId];
          
      } failure:^(NSDictionary *error) {
-         NSLog(@"Failure");
+         NSLog(@"doPollTrade Failure");
      }];
 }
 
@@ -522,7 +522,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
          NSLog(@"Success!  Trade Closed: %@", responseObject);
          
      } failure:^(NSDictionary *error) {
-         NSLog(@"Failure");
+         NSLog(@"doDeleteTrade Failure");
      }];
 }
 
