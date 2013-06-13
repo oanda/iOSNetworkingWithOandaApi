@@ -168,7 +168,7 @@ static NSDateFormatter *sRFC3339DateFormatter;
     symbolsString = [symbolsString substringToIndex:[symbolsString length] - 1];
     [parameters setObject:symbolsString forKey:@"instruments"];
     
-    [_afc getPath:@"instruments/price"
+    [_afc getPath:@"history"
         parameters:parameters
            success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
@@ -199,7 +199,7 @@ static NSDateFormatter *sRFC3339DateFormatter;
 {
     NSMutableDictionary *parameters;
     parameters = [self setupDefaultParams];
-	//[parameters setObject:symbol forKey:@"symbol"];
+	[parameters setObject:symbol forKey:@"instrument"];
 	[parameters setObject:granularity forKey:@"granularity"];
     
     if (count)
@@ -207,7 +207,7 @@ static NSDateFormatter *sRFC3339DateFormatter;
         [parameters setObject:[count stringValue] forKey:@"count"];
     }
     
-    NSString *pathString = [NSString stringWithFormat:@"instruments/%@/candles", symbol];
+    NSString *pathString = @"history";
     [_afc getPath:pathString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         // return the whole parsed JSON object
