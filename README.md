@@ -149,6 +149,7 @@ You need a valid username with an active account to do this.  In fact, at this p
             [self.networkDelegate createOrderForAccount:gAccountId
                                           symbol:@"EUR/GBP"
                                            units:[NSNumber numberWithInt:123]
+                                           side:@"buy"
                                             type:@"long"  //a buy request
                                            price:[[NSDecimalNumber alloc] initWithFloat:0.80443]
                                           expiry:[NSNumber numberWithInt:600]  // set to expire in 10 minutes

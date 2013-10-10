@@ -160,15 +160,17 @@ static NSDateFormatter *sRFC3339DateFormatter;
     
     // extract from passed-in strings, construct the list of symbol lists as a single string
     NSString *symbolsString = @"";
+    
     for (NSString *symbol in symbolPairList)
     {
         symbolsString = [symbolsString stringByAppendingString:symbol];
         symbolsString = [symbolsString stringByAppendingString:@","];
     }
     symbolsString = [symbolsString substringToIndex:[symbolsString length] - 1];
+    //symbolsString = [symbolsString stringByAppendingString:@"EUR_GBP"];
     [parameters setObject:symbolsString forKey:@"instruments"];
-    
-    [_afc getPath:@"instruments/price"
+
+    [_afc getPath:@"quote"
         parameters:parameters
            success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
@@ -207,7 +209,7 @@ static NSDateFormatter *sRFC3339DateFormatter;
         [parameters setObject:[count stringValue] forKey:@"count"];
     }
     
-    NSString *pathString = [NSString stringWithFormat:@"instruments/%@/candles", symbol];
+    NSString *pathString = [NSString stringWithFormat:@"history?instrument=%@", symbol];
     [_afc getPath:pathString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         // return the whole parsed JSON object
@@ -450,6 +452,7 @@ static NSDateFormatter *sRFC3339DateFormatter;
 - (void)createOrderForAccount:(NSNumber *)accountId
                        symbol:(NSString *)symbol
                         units:(NSNumber *)units
+                         side:(NSString *)side
                          type:(NSString *)type
                         price:(NSDecimalNumber *)price
                        expiry:(NSNumber *)expiryInSeconds
@@ -468,7 +471,8 @@ static NSDateFormatter *sRFC3339DateFormatter;
 	[parameters setObject:symbol forKey:@"instrument"];
     [parameters setObject:[units stringValue] forKey:@"units"];
     [parameters setObject:[NSString stringWithFormat:@"%.5f", [price floatValue]] forKey:@"price"];
-	[parameters setObject:type forKey:@"side"];
+	[parameters setObject:side forKey:@"side"];
+	[parameters setObject:type forKey:@"type"];
 
     NSString *expiryTimeTemp = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970] + [expiryInSeconds intValue]];
     NSString *expiryTime = [self dateFromRFC3339Date:expiryTimeTemp];
@@ -653,7 +657,6 @@ static NSDateFormatter *sRFC3339DateFormatter;
 {
     NSMutableDictionary *parameters;
     parameters = [self setupDefaultParams];
-    
     // set the mandatory params
 	[parameters setObject:symbol forKey:@"instrument"];
     [parameters setObject:[units stringValue] forKey:@"units"];
@@ -784,7 +787,7 @@ static NSDateFormatter *sRFC3339DateFormatter;
     if (price) {
 		[parameters setObject:[NSString stringWithFormat:@"%.5f", [price floatValue]] forKey:@"price"];
  	}
-    
+    //tradeId =[NSNumber numberWithInt:176199739];
     NSString *pathString = [NSString stringWithFormat:@"accounts/%@/trades/%@", [accountId stringValue], [tradeId stringValue]];
     [_afc deletePath:pathString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         

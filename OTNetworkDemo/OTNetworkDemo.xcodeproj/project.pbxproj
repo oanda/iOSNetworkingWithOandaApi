@@ -16,7 +16,6 @@
 		8CDA198F16665C5300EBCA42 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CDA198916665C5300EBCA42 /* Default.png */; };
 		8CDA199016665C5300EBCA42 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CDA198A16665C5300EBCA42 /* Default@2x.png */; };
 		8CDA199116665C5300EBCA42 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA198B16665C5300EBCA42 /* main.m */; };
-		8CDA199216665C5300EBCA42 /* OTNetworkDemo-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CDA198C16665C5300EBCA42 /* OTNetworkDemo-Info.plist */; };
 		8CDA199516665C5B00EBCA42 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8CDA199316665C5B00EBCA42 /* InfoPlist.strings */; };
 		8CDA1A3116666D5900EBCA42 /* libOTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDA1A3016666D5900EBCA42 /* libOTNetwork.a */; };
 		8CDA1A40166673A700EBCA42 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDA1A3F166673A700EBCA42 /* SystemConfiguration.framework */; };
@@ -151,7 +150,7 @@
 		8CDA17D21666563200EBCA42 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = OANDA;
 			};
 			buildConfigurationList = 8CDA17D51666563200EBCA42 /* Build configuration list for PBXProject "OTNetworkDemo" */;
@@ -179,7 +178,6 @@
 				8CDA198E16665C5300EBCA42 /* Default-568h@2x.png in Resources */,
 				8CDA198F16665C5300EBCA42 /* Default.png in Resources */,
 				8CDA199016665C5300EBCA42 /* Default@2x.png in Resources */,
-				8CDA199216665C5300EBCA42 /* OTNetworkDemo-Info.plist in Resources */,
 				8CDA199516665C5B00EBCA42 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

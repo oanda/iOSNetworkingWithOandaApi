@@ -201,7 +201,7 @@
         {
             // Start running internal tests for network calls
             //[self doAccountList];
-            [self doAccountStatus:@3973087];
+            [self doAccountStatus:@1774248];
         }
         else
         {
@@ -338,7 +338,8 @@ static NSNumber *gMaxTradeIdForTradePoll;
     [self.networkDelegate createOrderForAccount:accountId
                                   symbol:@"EUR_GBP"
                                    units:[NSNumber numberWithInt:123]
-                                    type:@"buy"
+                                    side:@"buy"
+                                    type:@"limit"
                                    price:[[NSDecimalNumber alloc] initWithFloat:0.80443]
                                   expiry:[NSNumber numberWithInt:600]  // set to expire in 10 minutes
                        minExecutionPrice:nil
@@ -437,7 +438,7 @@ static NSNumber *gMaxTradeIdForTradePoll;
     // Test creating a new trade order
     
     [self.networkDelegate openTradeForAccount:accountId
-                                symbol:@"AUD/JPY"
+                                symbol:@"AUD_JPY"
                                  units:[NSNumber numberWithInt:456]
                                   type:@"buy"
                                  price:nil

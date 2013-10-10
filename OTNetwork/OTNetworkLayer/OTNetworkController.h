@@ -192,10 +192,10 @@ typedef void (^NetworkFailBlock)(NSDictionary *error); //(NSDictionary *error);
  
  @param symbolPairList **Required**.  An NSArray of NSStrings, representing the symbols to retrieve prices for.  An example of this list would look like this:
      (
-         AUD/JPY,
-         CAD/HKD,
-         EUR/USD,
-         XAU/USD
+         AUD_JPY,
+         CAD_HKD,
+         EUR_USD,
+         XAU_USD
      )
  @param successBlock **Required**.  An Objective-C block passed in, to be triggered upon a successful network call.  The block has an
  argument of type **NSDictionary***.
@@ -398,7 +398,7 @@ typedef void (^NetworkFailBlock)(NSDictionary *error); //(NSDictionary *error);
              {
                  direction = long;
                  id = 177809801;
-                 instrument = "AUD/JPY";
+                 instrument = "AUD_JPY";
                  price = "85.568";
                  stopLoss = 0;
                  takeProfit = 0;
@@ -598,6 +598,7 @@ typedef void (^NetworkFailBlock)(NSDictionary *error); //(NSDictionary *error);
  @param accountId **Required**. Account Id to create the order for (must be owned by the user).
  @param symbol **Required**.  Symbol to buy/sell when the order triggers. (eg. EUR/USD).
  @param units **Required**.  Number of units to buy/sell when the order triggers.
+ @param side **Required**.  Direction trade was executed in
  @param type **Required**.  Should be either "long" (buy) or "short" (sell).
  @param price **Required**.  The price at which the order will trigger and create a trade.
  @param expiryInSeconds **Required**.  A period of time measured in seconds (from the moment this function is called), after which this order would be cancelled.
@@ -626,6 +627,7 @@ typedef void (^NetworkFailBlock)(NSDictionary *error); //(NSDictionary *error);
 - (void)createOrderForAccount:(NSNumber *)accountId
                        symbol:(NSString *)symbol
                         units:(NSNumber *)units
+                         side:(NSString *)side
                          type:(NSString *)type
                         price:(NSDecimalNumber *)price
                        expiry:(NSNumber *)expiryInSeconds
@@ -785,7 +787,7 @@ typedef void (^NetworkFailBlock)(NSDictionary *error); //(NSDictionary *error);
          ids = (
              177809801
          );
-         instrument = "AUD/JPY";
+         instrument = "AUD_JPY";
          marginUsed = "23.7685";
          price = "85.568";
          units = 456;
@@ -850,7 +852,7 @@ typedef void (^NetworkFailBlock)(NSDictionary *error); //(NSDictionary *error);
              {
                  direction = long;
                  id = 177809801;
-                 instrument = "AUD/JPY";
+                 instrument = "AUD_JPY";
                  price = "85.568";
                  stopLoss = 0;
                  takeProfit = 2000;
@@ -895,7 +897,7 @@ typedef void (^NetworkFailBlock)(NSDictionary *error); //(NSDictionary *error);
      {
          direction = long;
          id = 177809825;
-         instrument = "AUD/JPY";
+         instrument = "AUD_JPY";
          price = "85.58499999999999";
          profit = "0.0944";
      }
