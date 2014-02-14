@@ -248,7 +248,7 @@ typedef enum {
  
  If the HTTP method is `GET`, `HEAD`, or `DELETE`, the parameters will be used to construct a url-encoded query string that is appended to the request's URL. Otherwise, the parameters will be encoded according to the value of the `parameterEncoding` property, and set as the request body.
  
- @param method The HTTP method for the request, such as `GET`, `POST`, `PUT`, or `DELETE`. This parameter must not be `nil`.
+ @param method The HTTP method for the request, such as `GET`, `POST`, `PUT`, `PATCH` or `DELETE`. This parameter must not be `nil`.
  @param path The path to be appended to the HTTP client's base URL and used as the request URL. If `nil`, no path will be appended to the base URL.
  @param parameters The parameters to be either set as a query string for `GET` requests, or the request HTTP body.
   
@@ -306,7 +306,7 @@ typedef enum {
 /**
  Cancels all operations in the HTTP client's operation queue whose URLs match the specified HTTP method and path.
  
- @param method The HTTP method to match for the cancelled requests, such as `GET`, `POST`, `PUT`, or `DELETE`. If `nil`, all request operations with URLs matching the path will be cancelled. 
+ @param method The HTTP method to match for the cancelled requests, such as `GET`, `POST`, `PUT`, `PATCH` or `DELETE`. If `nil`, all request operations with URLs matching the path will be cancelled. 
  @param path The path appended to the HTTP client base URL to match against the cancelled requests. If `nil`, no path will be appended to the base URL.
  
  @discussion This method only cancels `AFHTTPRequestOperations` whose request URL matches the HTTP client base URL with the path appended. For complete control over the lifecycle of enqueued operations, you can access the `operationQueue` property directly, which allows you to, for instance, cancel operations filtered by a predicate, or simply use `-cancelAllRequests`. Note that the operation queue may include non-HTTP operations, so be sure to check the type before attempting to directly introspect an operation's `request` property.
@@ -376,7 +376,7 @@ typedef enum {
          failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 /**
- Creates an `AFHTTPRequestOperation` with a `PUT` request, and enqueues it to the HTTP client's operation queue.
+ Creates an `AFHTTPRequestOperation` with a `PATCH` request, and enqueues it to the HTTP client's operation queue.
  
  @param path The path to be appended to the HTTP client's base URL and used as the request URL.
  @param parameters The parameters to be encoded and set in the request HTTP body.
@@ -385,7 +385,7 @@ typedef enum {
  
  @see -HTTPRequestOperationWithRequest:success:failure:
  */
-- (void)putPath:(NSString *)path 
+- (void)patchPath:(NSString *)path 
      parameters:(NSDictionary *)parameters 
         success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;

@@ -566,7 +566,7 @@ static NSDateFormatter *sRFC3339DateFormatter;
 	}
     
     NSString *pathString = [NSString stringWithFormat:@"accounts/%@/orders/%@", [accountId stringValue], [orderId stringValue]];
-    [_afc putPath:pathString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [_afc patchPath:pathString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         // the response would be empty in this case
         successBlock(nil);
@@ -729,7 +729,7 @@ static NSDateFormatter *sRFC3339DateFormatter;
 	}
     
     NSString *pathString = [NSString stringWithFormat:@"accounts/%@/trades/%@", [accountId stringValue], [tradeId stringValue]];
-    [_afc putPath:pathString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [_afc patchPath:pathString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         // the response would be empty in this case
         successBlock(nil);
