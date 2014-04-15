@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D29FF6018FD802B00A3925B /* OTTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D29FF5F18FD802B00A3925B /* OTTableViewController.m */; };
+		5D02C85518FD88C60009C80C /* OTTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D02C85418FD88C60009C80C /* OTTableViewController.m */; };
 		5DCA053018F4798B00BC1486 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCA052F18F4798B00BC1486 /* Foundation.framework */; };
 		5DCA053218F4798B00BC1486 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCA053118F4798B00BC1486 /* CoreGraphics.framework */; };
 		5DCA053418F4798B00BC1486 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCA053318F4798B00BC1486 /* UIKit.framework */; };
@@ -45,8 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5D29FF5E18FD802B00A3925B /* OTTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OTTableViewController.h; path = "../../../../Desktop/iOSNetworkingWithOandaApi-master/OTNetworkDemo/OTNetworkDemo/SampleCode/OTTableViewController.h"; sourceTree = "<group>"; };
-		5D29FF5F18FD802B00A3925B /* OTTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OTTableViewController.m; path = "../../../../Desktop/iOSNetworkingWithOandaApi-master/OTNetworkDemo/OTNetworkDemo/SampleCode/OTTableViewController.m"; sourceTree = "<group>"; };
+		5D02C85318FD88C60009C80C /* OTTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTTableViewController.h; sourceTree = "<group>"; };
+		5D02C85418FD88C60009C80C /* OTTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTTableViewController.m; sourceTree = "<group>"; };
 		5DCA052C18F4798B00BC1486 /* OANDADemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OANDADemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DCA052F18F4798B00BC1486 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5DCA053118F4798B00BC1486 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -150,12 +150,12 @@
 		5DCA053518F4798B00BC1486 /* OANDADemo */ = {
 			isa = PBXGroup;
 			children = (
+				5D02C85318FD88C60009C80C /* OTTableViewController.h */,
+				5D02C85418FD88C60009C80C /* OTTableViewController.m */,
 				5DCA056C18F47CDC00BC1486 /* AFNetworking */,
 				5DCA056718F47CCD00BC1486 /* OTNetworkLayer */,
 				5DCA053E18F4798B00BC1486 /* OTAppDelegate.h */,
 				5DCA053F18F4798B00BC1486 /* OTAppDelegate.m */,
-				5D29FF5E18FD802B00A3925B /* OTTableViewController.h */,
-				5D29FF5F18FD802B00A3925B /* OTTableViewController.m */,
 				5DCA054A18F4798B00BC1486 /* Images.xcassets */,
 				5DCA053618F4798B00BC1486 /* Supporting Files */,
 			);
@@ -330,9 +330,9 @@
 				5DCA058318F47CDC00BC1486 /* AFHTTPClient.m in Sources */,
 				5DCA058A18F47CDC00BC1486 /* AFXMLRequestOperation.m in Sources */,
 				5DCA056B18F47CCD00BC1486 /* OTNetworkController.m in Sources */,
+				5D02C85518FD88C60009C80C /* OTTableViewController.m in Sources */,
 				5DCA054018F4798B00BC1486 /* OTAppDelegate.m in Sources */,
 				5DCA058618F47CDC00BC1486 /* AFJSONRequestOperation.m in Sources */,
-				5D29FF6018FD802B00A3925B /* OTTableViewController.m in Sources */,
 				5DCA053C18F4798B00BC1486 /* main.m in Sources */,
 				5DCA058818F47CDC00BC1486 /* AFPropertyListRequestOperation.m in Sources */,
 				5DCA058718F47CDC00BC1486 /* AFNetworkActivityIndicatorManager.m in Sources */,
