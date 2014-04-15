@@ -7,8 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "OTNetworkController.h"
 
 @interface ViewController ()
+@property (nonatomic,strong) NSArray *array;
 
 @end
 
@@ -18,6 +20,25 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    OTNetworkController *testController = [[OTNetworkController alloc]init];
+    
+    [self.networkDelegate rateListSymbolsSuccess:^(NSDictionary *responseObject)
+     {
+         //NSLog(@"Success!  %@", responseObject);
+         self.listSymbols = [responseObject objectForKey:@"instruments"];
+         
+         // Build the array of strings to pass into rateQuote
+         self.symbolsArray = [[NSMutableArray alloc] initWithCapacity:self.listSymbols.count];
+         for (NSDictionary *symbolDict in self.listSymbols)
+         {
+             [self.symbolsArray addObject:[NSString stringWithString:[symbolDict valueForKey:@"instrument"]]];
+         }
+         
+         allowRatesFetching = YES;
+     } failure:^(NSDictionary *error) {
+         NSLog(@"Failure");
+     }]
+    
 }
 
 - (void)didReceiveMemoryWarning
