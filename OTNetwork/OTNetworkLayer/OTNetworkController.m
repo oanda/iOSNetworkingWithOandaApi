@@ -170,7 +170,7 @@ static NSDateFormatter *sRFC3339DateFormatter;
     //symbolsString = [symbolsString stringByAppendingString:@"EUR_GBP"];
     [parameters setObject:symbolsString forKey:@"instruments"];
 
-    [_afc getPath:@"quote"
+    [_afc getPath:@"prices"
         parameters:parameters
            success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
@@ -209,7 +209,7 @@ static NSDateFormatter *sRFC3339DateFormatter;
         [parameters setObject:[count stringValue] forKey:@"count"];
     }
     
-    NSString *pathString = [NSString stringWithFormat:@"history?instrument=%@", symbol];
+    NSString *pathString = [NSString stringWithFormat:@"candles?instrument=%@", symbol];
     [_afc getPath:pathString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         // return the whole parsed JSON object
