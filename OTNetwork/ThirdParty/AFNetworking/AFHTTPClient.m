@@ -637,16 +637,6 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {}
     [self enqueueHTTPRequestOperation:operation];
 }
 
-- (void)patchPath:(NSString *)path
-       parameters:(NSDictionary *)parameters
-          success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-          failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
-{
-    NSURLRequest *request = [self requestWithMethod:@"PATCH" path:path parameters:parameters];
-	AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:success failure:failure];
-    [self enqueueHTTPRequestOperation:operation];
-}
-
 #pragma mark - NSCoding
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
