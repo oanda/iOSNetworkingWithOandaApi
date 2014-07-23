@@ -1,7 +1,7 @@
 ![](https://raw.github.com/oanda/apidocs/master/images/oanda_header.png)
 =========
 
-**Disclaimer**: The OANDA API is currently available for use in our developer sandbox, where you are free to develop and test your apps.  To use the API with production accounts, please email us at api@oanda.com.
+**Disclaimer**: The OANDA API is available for use on our live trading platform (fxTrade), our practice platform (fxTrade Practice) and our developer sandbox, where you are free to develop and test your apps. This sample code currently only works on our sandbox environment because this code does not support the authenticated requests needed by the other platforms.
 
 <table>
 	<tr>
@@ -21,7 +21,7 @@ Steps for Integration
 These are the simple steps to follow to incorporate this library into your iOS project:
 
 1. Add the library itself.  There are two ways to do this:
-    * Manually include the library folder <b>/OTNetwork/OTNetworkLayer</b> into your project.  This effectively includes <b>OTNetworkController.h</b> and <b>OTNertowkController.m</b>
+    * Manually include the library folder <b>/OTNetwork/OTNetworkLayer</b> into your project.  This effectively includes <b>OTNetworkController.h</b> and <b>OTNetworkController.m</b>
 
         Please note you will need these third party libraries as well:
 
@@ -56,7 +56,7 @@ For reference, please open the included <b>OTNetworkOandaApi.xcworkspace</b>.  I
 Notes on the OTNetwork Library
 ------------------------------
 
-* User login & authentication is currently disabled, so simply passing in an approved username for now (please speak with your <b>OANDA</b> partner for details).  Please see <b>accountListForUsername:success:failure:</b> for further info.
+* User authentication is not supported in this app, so simply pass in a username (see the API [documentation](http://developer.oanda.com/docs/v1/accounts/#create-a-test-account) page for details on creating a username).  Please see <b>accountListForUsername:success:failure:</b> for further info.
 <br/><br/>
 * It support the most commonly used feature set like polling for rates, making and closing orders & trades, generating reports, etc.  Other features (eg. price alerts, news, etc.) are being worked on and not ready for this release.
 <br/><br/>
